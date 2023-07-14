@@ -1,0 +1,154 @@
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#player {
+  max-width: 500px;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 767px) {
+  .dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+.dropdown-menu a.dropdown-item.active {
+  background-color: #db0036;
+  color: #fff;
+}
+
+#song-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#progress-bar {
+  height: 4px;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+#progress {
+  height: 100%;
+  background-color: #db0036;
+  width: 0;
+}
+
+.playlist {
+  list-style: none;
+  padding: 0;
+  background-color: #fff;
+  margin-top: 20px;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playlist li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.playlist li.active {
+  background-color: #db0036;
+  color: #fff;
+}
+
+#player-controls {
+  margin-top: 20px;
+}
+
+.control-button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.control-button.active {
+  color: #db0036;
+}
+
+#volume {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#timer {
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+}
+
+.search-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.most-played {
+  margin-top: 20px;
+}
+
+.most-played li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.most-played li.active {
+  background-color: #db0036;
+  color: #fff;
+}
+
+#tabs {
+  background-color: #f8f8f8;
+}
+
+.most-played-list {
+  list-style: none;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 20px;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  cursor: pointer;
+}
+
+.recently-played-list {
+  list-style: none;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 20px;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  cursor: pointer;
+}
