@@ -194,65 +194,6 @@ $(document).ready(function() {
     }
   }
 
-  function updateRecentlyPlayed() {
-    var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-    $(".recently-played-list").empty();
-    for (var i = 0; i < Math.min(recentlyPlayed.length, 2); i++) {
-      var song = recentlyPlayed[i];
-      var li = $("<li>").text(song);
-      if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
-        li.addClass("active");
-      }
-      li.click(function() {
-        var clickedSong = $(this).text();
-        currentIndex = songs.indexOf(clickedSong);
-        loadSong();
-        playSong();
-        increasePlayCount(clickedSong);
-      });
-      $(".recently-played-list").append(li);
-    }
-  }
-
-  function increasePlayCount(song) {
-    var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
-    if (mostPlayed[song]) {
-      mostPlayed[song]++;
-    } else {
-      mostPlayed[song] = 1;
-    }
-    localStorage.setItem("mostPlayed", JSON.stringify(mostPlayed));
-
-    var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-    if (!recentlyPlayed.includes(song)) {
-      recentlyPlayed.unshift(song);
-      if (recentlyPlayed.length > 10) {
-        recentlyPlayed.pop();
-      }
-    } else {
-      // Move the song to the top of the recently played list
-      var songIndex = recentlyPlayed.indexOf(song);
-      recentlyPlayed.splice(songIndex, 1);
-      recentlyPlayed.unshift(song);
-    }
-    localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
-
-    updateMostPlayed();
-    updateRecentlyPlayed();
-  }
-
-  function showAllSongs() {
-    $("#all-songs-tab").tab("show");
-  }
-
-  function showMostPlayed() {
-    $("#most-played-tab").tab("show");
-  }
-
-  $("#volume").on("input", function() {
-    updateVolume();
-  });
-
   function updateVolume() {
     var volume = $("#volume").val();
     audio.volume = volume;
@@ -271,17 +212,32 @@ $(document).ready(function() {
     $("#timer").text(currentTime + " / " + duration);
   }
 
-  audio.addEventListener("timeupdate", function() {
-    updateTimer();
-    updateProgressBar();
-  });
-
   function updateProgressBar() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
     var progressPercentage = (currentTime / duration) * 100;
     $("#progress").css("width", progressPercentage + "%");
   }
+
+  function seekSong(event) {
+    var timerWidth = $("#timer").width();
+    var clickX = event.pageX - $(this).offset().left;
+    var percent = clickX / timerWidth;
+    var seekTime = audio.duration * percent;
+    audio.currentTime = seekTime;
+  }
+
+  audio.addEventListener("timeupdate", function() {
+    updateTimer();
+    updateProgressBar();
+  });
+
+  $("#timer").click(seekSong);
+
+  $("#search-input").on("input", function() {
+    var searchTerm = $(this).val();
+    searchSongs(searchTerm);
+  });
 
   function searchSongs(searchTerm) {
     var filteredSongs = songs.filter(function(song) {
@@ -306,11 +262,6 @@ $(document).ready(function() {
       $(".playlist").append(li);
     }
   }
-
-  $("#search-input").on("input", function() {
-    var searchTerm = $(this).val();
-    searchSongs(searchTerm);
-  });
 
   function highlightPreviousSong() {
     var $currentItem = $(".playlist li.active");
