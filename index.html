@@ -12,6 +12,7 @@
     <div class="spinner"></div>
   </div>
    <div class="container mt-2">
+   
     <p class="fw-light fs-1">MH Music Player</p>
     <div class="row">
       <div class="col-lg-12 col-md-12">
@@ -32,26 +33,9 @@
                   <a class="nav-link text-secondary" id="recently-played-tab" data-bs-toggle="tab" href="#recently-played">Recently Played</a>
                 </li>
               </ul>
-              <div class="accordion d-lg-none mt-2" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      Select Playlist
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <ul class="accordion-list">
-                        <li><a class="accordion-item" href="#" id="all-songs-dropdown">All Songs</a></li>
-                        <li><a class="accordion-item" href="#" id="most-played-dropdown">Most Played</a></li>
-                        <li><a class="accordion-item" href="#" id="recently-played-dropdown">Recently Played</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-content">
+              
+            
+            <div class="tab-content d-none d-lg-flex">
               <div class="tab-pane fade show active" id="all-songs">
                 <ul class="playlist"></ul>
               </div>
@@ -62,6 +46,29 @@
                 <ul class="recently-played-list"></ul>
               </div>
             </div>
+			<div class="accordion d-lg-none mt-2" id="accordionExample">
+                <div class="accordion">
+      <div class="accordion-item ">
+  <p class="accordion-title bg-secondary ">All Songs <i class="fas fa-chevron-down"></i></p>
+  <div class="accordion-content">
+    <ul class="playlist"></ul>
+  </div>
+</div>
+<div class="accordion-item">
+ <p class="accordion-title bg-secondary  ">Most Played <i class="fas fa-chevron-down"></i></p>
+  <div class="accordion-content">
+    <ul class="most-played-list"></ul>
+  </div>
+</div>
+<div class="accordion-item">
+ <p class="accordion-title bg-secondary ">Recently Played <i class="fas fa-chevron-down"></i></p>
+  <div class="accordion-content">
+    <ul class="recently-played-list"></ul>
+  </div>
+</div>
+
+    </div>
+              </div>
           </div>
           <div class="text-center" id="song-title"></div>
           <div id="progress-bar">
@@ -99,7 +106,7 @@
     </div>
   </div>
 
-
+<script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
