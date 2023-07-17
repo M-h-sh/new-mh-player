@@ -168,7 +168,7 @@ $(document).ready(function() {
         li.addClass("active");
       }
       li.click(function() {
-        currentIndex = $(this).index();
+        currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
         var currentSong = songs[currentIndex];
@@ -184,7 +184,7 @@ $(document).ready(function() {
         li.addClass("active");
       }
       li.click(function() {
-        currentIndex = $(this).index();
+        currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
         var currentSong = songs[currentIndex];
@@ -212,6 +212,11 @@ $(document).ready(function() {
     $("#timer").text(currentTime + " / " + duration);
   }
 
+  audio.addEventListener("timeupdate", function() {
+    updateTimer();
+    updateProgressBar();
+  });
+
   function updateProgressBar() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
@@ -227,16 +232,10 @@ $(document).ready(function() {
     audio.currentTime = seekTime;
   }
 
-  audio.addEventListener("timeupdate", function() {
-    updateTimer();
-    updateProgressBar();
-  });
-
   $("#timer").click(seekSong);
 
-  $("#search-input").on("input", function() {
-    var searchTerm = $(this).val();
-    searchSongs(searchTerm);
+  $("#volume").on("input", function() {
+    updateVolume();
   });
 
   function searchSongs(searchTerm) {
@@ -326,6 +325,4 @@ $(document).ready(function() {
   loadPlaylist();
   showAllSongs();
   loadSong();
-  updateMostPlayed();
-  updateRecentlyPlayed();
 });
