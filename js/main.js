@@ -46,7 +46,12 @@ $(document).ready(function() {
       loadSong();
       playSong();
     } else if (isRepeatAll) {
-      nextSong();
+      currentIndex++;
+      if (currentIndex >= songs.length) {
+        currentIndex = 0;
+      }
+      loadSong();
+      playSong();
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
@@ -58,7 +63,6 @@ $(document).ready(function() {
     }
   });
 
-
   function loadSong() {
     audio.src = "files/" + songs[currentIndex] + ".mp3";
     $("#song-title").text(songs[currentIndex]);
@@ -66,8 +70,8 @@ $(document).ready(function() {
     $(".playlist li:eq(" + currentIndex + ")").addClass("active");
     $("#tabs a").removeClass("active");
     $("#tabs a:eq(" + currentIndex + ")").addClass("active");
-    $(".dropdown-menu a").removeClass("active");
-    $(".dropdown-menu a:eq(" + currentIndex + ")").addClass("active");
+    $(".accordion-item").removeClass("active");
+    $(".accordion-item:eq(" + currentIndex + ")").addClass("active");
   }
 
   function playSong() {
@@ -96,13 +100,7 @@ $(document).ready(function() {
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
-        if (isRepeat) {
-          currentIndex = 0;
-        } else {
-          currentIndex = songs.length - 1;
-          pauseSong();
-          return;
-        }
+        currentIndex = 0;
       }
     }
     loadSong();
@@ -112,13 +110,7 @@ $(document).ready(function() {
   function prevSong() {
     currentIndex--;
     if (currentIndex < 0) {
-      if (isRepeat) {
-        currentIndex = songs.length - 1;
-      } else {
-        currentIndex = 0;
-        pauseSong();
-        return;
-      }
+      currentIndex = songs.length - 1;
     }
     loadSong();
     playSong();
@@ -138,6 +130,29 @@ $(document).ready(function() {
       recentlyPlayed.unshift(songs[currentIndex]);
     }
     localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
+
+    // Update the recently played playlist immediately
+    updateRecentlyPlayedPlaylist();
+  }
+
+  function updateRecentlyPlayedPlaylist() {
+    var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    $(".recently-played-list").empty();
+    for (var i = 0; i < recentlyPlayed.length; i++) {
+      var song = recentlyPlayed[i];
+      var li = $("<li>").text(song);
+      if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
+        li.addClass("active");
+      }
+      li.click(function() {
+        currentIndex = songs.indexOf($(this).text());
+        loadSong();
+        playSong();
+        var currentSong = songs[currentIndex];
+        increasePlayCount(currentSong);
+      });
+      $(".recently-played-list").append(li);
+    }
   }
 
   function increasePlayCount(song) {
@@ -181,8 +196,8 @@ $(document).ready(function() {
     $("#all-songs").addClass("show active");
     $("#most-played, #recently-played").removeClass("show active");
 
-    // Update the dropdown button with the current playlist name
-    $("#playlist-dropdown").text("All Songs");
+    // Update the accordion button with the current playlist name
+    $("#headingOne button").text("All Songs");
   }
 
   function showMostPlayed() {
@@ -191,8 +206,8 @@ $(document).ready(function() {
     $("#most-played").addClass("show active");
     $("#all-songs, #recently-played").removeClass("show active");
 
-    // Update the dropdown button with the current playlist name
-    $("#playlist-dropdown").text("Most Played");
+    // Update the accordion button with the current playlist name
+    $("#headingOne button").text("Most Played");
   }
 
   function showRecentlyPlayed() {
@@ -201,8 +216,8 @@ $(document).ready(function() {
     $("#recently-played").addClass("show active");
     $("#all-songs, #most-played").removeClass("show active");
 
-    // Update the dropdown button with the current playlist name
-    $("#playlist-dropdown").text("Recently Played");
+    // Update the accordion button with the current playlist name
+    $("#headingOne button").text("Recently Played");
   }
 
   $("#all-songs-tab, #all-songs-dropdown").click(function() {
@@ -243,15 +258,6 @@ $(document).ready(function() {
   $("#shuffle").click(function() {
     isShuffle = !isShuffle;
     $(this).toggleClass("active", isShuffle);
-  });
-
-  audio.addEventListener("ended", function() {
-    if (isShuffle) {
-      var randomIndex = Math.floor(Math.random() * songs.length);
-      currentIndex = randomIndex;
-    } else {
-      nextSong();
-    }
   });
 
   function loadPlaylist() {
@@ -351,7 +357,7 @@ $(document).ready(function() {
         li.addClass("active");
       }
       li.click(function() {
-        currentIndex = $(this).index();
+        currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
         var currentSong = songs[currentIndex];
