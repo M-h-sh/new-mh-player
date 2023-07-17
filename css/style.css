@@ -94,25 +94,12 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 500px) {
-  .device {
-    display:block;
+  .dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
   }
 }
-@media (min-width: 501px) {
-  .device {
-    display:none;
-  }
-}
-@media (max-width: 500px) {
-  .desktop{
-    display:none;
-  }
-}
-@media (min-width: 501px) {
-  .desktop {
-    display:block;
-  }
-}
+
 .dropdown-menu a.dropdown-item.active {
   background-color: #db0036;
   color: #fff;
