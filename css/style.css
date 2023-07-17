@@ -42,6 +42,49 @@ body {
   align-items: center;
 }
 
+.accordion-title {
+ color:#fff;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+}
+
+.accordion-item .accordion-title {
+  position: relative;
+  
+}
+
+.accordion-item .accordion-title .fas {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.accordion-item .accordion-title.active .fas {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
+.accordion-content {
+  display: none;
+}
+
+.accordion-content.show {
+  display: block;
+}
+
+.accordion-title.active {
+  background-color: #db0036;
+  color: #fff;
+}
+
+
 #player {
   max-width: 500px;
   width: 100%;
