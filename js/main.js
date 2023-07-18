@@ -4,9 +4,9 @@ $(document).ready(function() {
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
-    "Anga Nilavi Amapiano feat Tebza De DJ",
+    "Anga Nilavi Amapiano feat Tebza De DJ", 
     "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
+    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee" 
   ];
   var currentIndex = 0;
   var audio = new Audio();
@@ -17,7 +17,6 @@ $(document).ready(function() {
   var isAccordionActive = false;
   var activePlaylist = null;
   var activeIndex = 0;
-  var isPreloading = false;
 
   function downloadSong() {
     var downloadLink = document.createElement("a");
@@ -37,7 +36,7 @@ $(document).ready(function() {
     }
 
     var isCurrentlyPlaying = isPlaying && activePlaylist && activeIndex === currentIndex;
-
+    
     $(this).toggleClass("active");
     accordionContent.slideToggle(function() {
       isAccordionActive = accordionContent.is(":visible");
@@ -70,48 +69,41 @@ $(document).ready(function() {
     if (audio.src !== songUrl) {
       // Load the selected song
       loadSong(songUrl);
-    } else if (!isPlaying) {
+      playSong();
+    } else {
       togglePlayPause();
     }
   }
 
   function loadSong(songUrl) {
-    if (!isPreloading) {
-      isPreloading = true;
-      var preloadAudio = new Audio(songUrl);
-      preloadAudio.addEventListener("canplaythrough", function() {
-        audio.src = songUrl;
-        audio.load();
-        isPreloading = false;
-        if (isPlaying) {
-          audio.play();
-        }
-      });
-      preloadAudio.addEventListener("error", function() {
-        isPreloading = false;
-      });
-    }
+    audio.src = songUrl;
+    audio.load();
   }
 
   audio.addEventListener("ended", function() {
     if (isRepeatCurrent) {
       loadSong();
+      playSong();
     } else if (isShuffle) {
       var randomIndex = Math.floor(Math.random() * songs.length);
       currentIndex = randomIndex;
       loadSong();
+      playSong();
     } else if (isRepeatAll) {
       currentIndex++;
       if (currentIndex >= songs.length) {
         currentIndex = 0;
       }
       loadSong();
+      playSong();
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
-        currentIndex = 0;
+        pauseSong();
+      } else {
+        loadSong();
+        playSong();
       }
-      loadSong();
     }
   });
 
@@ -145,6 +137,7 @@ $(document).ready(function() {
       }
     }
     loadSong();
+    playSong();
   }
 
   function prevSong() {
@@ -153,6 +146,7 @@ $(document).ready(function() {
       currentIndex = songs.length - 1;
     }
     loadSong();
+    playSong();
   }
 
   function updateRecentlyPlayed() {
@@ -390,15 +384,9 @@ $(document).ready(function() {
     var index = $activeItem.index();
     currentIndex = index;
     loadSong();
-
-    // Toggle play/pause if the song is already playing
-    if (isPlaying && audio.src.includes(songs[currentIndex])) {
-      togglePlayPause();
-    } else {
-      playSong();
-      var currentSong = songs[currentIndex];
-      increasePlayCount(currentSong);
-    }
+    playSong();
+    var currentSong = songs[currentIndex];
+    increasePlayCount(currentSong);
   }
 
   function hidePreloader() {
