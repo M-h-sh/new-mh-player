@@ -10,6 +10,9 @@ $(document).ready(function() {
   var isRepeatAll = false;
   var isRepeatCurrent = false;
   var isShuffle = false;
+  var isAccordionActive = false;
+  var activePlaylist = null;
+  var activeIndex = 0;
 
   function downloadSong() {
     var downloadLink = document.createElement("a");
@@ -23,14 +26,20 @@ $(document).ready(function() {
   });
 
   $(".accordion-title").click(function() {
-    $(this).toggleClass("active");
-    $(this).next(".accordion-content").toggleClass("show");
-
-    if ($(this).hasClass("active")) {
-      var playlist = $(this).next(".accordion-content").find("ul");
-      var currentIndex = playlist.find("li.active").index();
-      loadSongFromPlaylist(playlist, currentIndex);
+    var accordionContent = $(this).next(".accordion-content");
+    if (accordionContent.is(":animated")) {
+      return;
     }
+
+    $(this).toggleClass("active");
+    accordionContent.slideToggle(function() {
+      isAccordionActive = accordionContent.is(":visible");
+      if (isAccordionActive) {
+        activePlaylist = accordionContent.find("ul");
+        activeIndex = activePlaylist.find("li.active").index();
+        loadSongFromPlaylist(activePlaylist, activeIndex);
+      }
+    });
   });
 
   function loadSongFromPlaylist(playlist, currentIndex) {
@@ -48,9 +57,19 @@ $(document).ready(function() {
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
 
-    // Load and play the selected song
-    loadSong();
-    playSong();
+    var songUrl = "files/" + songs[currentIndex] + ".mp3";
+    if (audio.src !== songUrl) {
+      // Load the selected song
+      loadSong(songUrl);
+      playSong();
+    } else {
+      togglePlayPause();
+    }
+  }
+
+  function loadSong(songUrl) {
+    audio.src = songUrl;
+    audio.load();
   }
 
   audio.addEventListener("ended", function() {
