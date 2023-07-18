@@ -35,11 +35,8 @@
       return;
     }
 
-    var wasPlaying = isPlaying;
-    if (wasPlaying) {
-      audio.pause();
-    }
-
+    var isCurrentlyPlaying = isPlaying && activePlaylist && activeIndex === currentIndex;
+    
     $(this).toggleClass("active");
     accordionContent.slideToggle(function() {
       isAccordionActive = accordionContent.is(":visible");
@@ -47,9 +44,8 @@
         activePlaylist = accordionContent.find("ul");
         activeIndex = activePlaylist.find("li.active").index();
         loadSongFromPlaylist(activePlaylist, activeIndex);
-        if (wasPlaying) {
-          audio.play();
-        }
+      } else if (isCurrentlyPlaying) {
+        loadSongFromPlaylist(activePlaylist, activeIndex);
       }
     });
   });
@@ -68,42 +64,45 @@
     $("#tabs a").eq(songIndex).addClass("active");
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
+
+    var songUrl = "files/" + songs[currentIndex] + ".mp3";
+    if (audio.src !== songUrl) {
+      // Load the selected song
+      loadSong(songUrl);
+    } else if (!isPlaying) {
+      togglePlayPause();
+    }
+  }
+
+  function loadSong(songUrl) {
+    audio.src = songUrl;
+    audio.load();
+    if (isPlaying) {
+      audio.play();
+    }
   }
 
   audio.addEventListener("ended", function() {
     if (isRepeatCurrent) {
-      audio.play();
+      loadSong();
     } else if (isShuffle) {
       var randomIndex = Math.floor(Math.random() * songs.length);
       currentIndex = randomIndex;
       loadSong();
-      audio.play();
     } else if (isRepeatAll) {
       currentIndex++;
       if (currentIndex >= songs.length) {
         currentIndex = 0;
       }
       loadSong();
-      audio.play();
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
-        audio.pause();
-      } else {
-        loadSong();
-        audio.play();
+        currentIndex = 0;
       }
+      loadSong();
     }
   });
-
-  function loadSong() {
-    audio.src = "files/" + songs[currentIndex] + ".mp3";
-    $("#song-title").text(songs[currentIndex]);
-    $(".playlist li").removeClass("active");
-    $(".playlist li:eq(" + currentIndex + ")").addClass("active");
-    $(".accordion-content li").removeClass("active");
-    $(".accordion-content li:eq(" + currentIndex + ")").addClass("active");
-  }
 
   function playSong() {
     audio.play();
@@ -135,7 +134,6 @@
       }
     }
     loadSong();
-    playSong();
   }
 
   function prevSong() {
@@ -144,7 +142,6 @@
       currentIndex = songs.length - 1;
     }
     loadSong();
-    playSong();
   }
 
   function updateRecentlyPlayed() {
@@ -164,41 +161,8 @@
 
     // Update the recently played playlist immediately
     updateRecentlyPlayedPlaylist();
-  
   } 
-  function updateRecentlyPlayedPlaylist() {
-    var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-    $(".recently-played-list").empty();
-    for (var i = 0; i < recentlyPlayed.length; i++) {
-      var song = recentlyPlayed[i];
-      var li = $("<li>").text(song);
-      if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
-        li.addClass("active");
-      }
-      li.click(function() {
-        currentIndex = songs.indexOf($(this).text());
-        loadSong();
-        playSong();
-        var currentSong = songs[currentIndex];
-        increasePlayCount(currentSong);
-      });
-      $(".recently-played-list").append(li);
-    }
-  }
-
-  function increasePlayCount(song) {
-    var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
-    if (mostPlayed[song]) {
-      mostPlayed[song]++;
-    } else {
-      mostPlayed[song] = 1;
-    }
-    localStorage.setItem("mostPlayed", JSON.stringify(mostPlayed));
-
-    updateMostPlayed();
-  }
-
-  function updateMostPlayed() {
+   function updateMostPlayed() {
     var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
     var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
       return mostPlayed[b] - mostPlayed[a];
