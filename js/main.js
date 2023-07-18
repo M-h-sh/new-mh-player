@@ -2,7 +2,8 @@ $(document).ready(function() {
   var songs = [
     "Bruce_Africa_-_You",
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
-    "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix"
+    "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
+	"Umjabulisi  Vuma Original Audio"
   ];
   var currentIndex = 0;
   var audio = new Audio();
