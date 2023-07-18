@@ -5,8 +5,8 @@
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
     "Anga Nilavi Amapiano feat Tebza De DJ", 
-   "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer", 
-   "Tyler ICU Tumela ZA Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA Tyron Dee"
+   "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
+   "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee" 
   ];
   var currentIndex = 0;
   var audio = new Audio();
