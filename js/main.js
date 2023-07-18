@@ -1,12 +1,12 @@
- $(document).ready(function() {
+$(document).ready(function() {
   var songs = [
     "Bruce_Africa_-_You",
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
-    "Anga Nilavi Amapiano feat Tebza De DJ", 
-   "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-   "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee" 
+    "Anga Nilavi Amapiano feat Tebza De DJ",
+    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
+    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
   ];
   var currentIndex = 0;
   var audio = new Audio();
@@ -17,6 +17,7 @@
   var isAccordionActive = false;
   var activePlaylist = null;
   var activeIndex = 0;
+  var isPreloading = false;
 
   function downloadSong() {
     var downloadLink = document.createElement("a");
@@ -36,7 +37,7 @@
     }
 
     var isCurrentlyPlaying = isPlaying && activePlaylist && activeIndex === currentIndex;
-    
+
     $(this).toggleClass("active");
     accordionContent.slideToggle(function() {
       isAccordionActive = accordionContent.is(":visible");
@@ -75,10 +76,20 @@
   }
 
   function loadSong(songUrl) {
-    audio.src = songUrl;
-    audio.load();
-    if (isPlaying) {
-      audio.play();
+    if (!isPreloading) {
+      isPreloading = true;
+      var preloadAudio = new Audio(songUrl);
+      preloadAudio.addEventListener("canplaythrough", function() {
+        audio.src = songUrl;
+        audio.load();
+        isPreloading = false;
+        if (isPlaying) {
+          audio.play();
+        }
+      });
+      preloadAudio.addEventListener("error", function() {
+        isPreloading = false;
+      });
     }
   }
 
@@ -161,8 +172,9 @@
 
     // Update the recently played playlist immediately
     updateRecentlyPlayedPlaylist();
-  } 
-   function updateMostPlayed() {
+  }
+
+  function updateMostPlayed() {
     var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
     var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
       return mostPlayed[b] - mostPlayed[a];
