@@ -1,4 +1,4 @@
-$(document).ready(function() {
+ $(document).ready(function() {
   var songs = [
     "Bruce_Africa_-_You",
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
@@ -66,20 +66,6 @@ $(document).ready(function() {
     $("#tabs a").eq(songIndex).addClass("active");
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
-
-    var songUrl = "files/" + songs[currentIndex] + ".mp3";
-    if (audio.src !== songUrl) {
-      // Load the selected song
-      audio.src = songUrl;
-      audio.load();
-      if (isPlaying) {
-        audio.play();
-      }
-    } else {
-      if (!isPlaying) {
-        audio.pause();
-      }
-    }
   }
 
   audio.addEventListener("ended", function() {
