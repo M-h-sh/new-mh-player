@@ -4,7 +4,8 @@
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
-    "Anga Nilavi Amapiano feat Tebza De DJ"
+    "Anga Nilavi Amapiano feat Tebza De DJ", 
+   "Tyler ICU Tumela ZA Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA Tyron Dee"
   ];
   var currentIndex = 0;
   var audio = new Audio();
