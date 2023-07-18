@@ -4,9 +4,7 @@ $(document).ready(function() {
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
-    "Anga Nilavi Amapiano feat Tebza De DJ",
-    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
+    "Anga Nilavi Amapiano feat Tebza De DJ"
   ];
   var currentIndex = 0;
   var audio = new Audio();
@@ -37,7 +35,7 @@ $(document).ready(function() {
 
     var wasPlaying = isPlaying;
     if (wasPlaying) {
-      audio.play();
+      audio.pause();
     }
 
     $(this).toggleClass("active");
@@ -68,7 +66,20 @@ $(document).ready(function() {
     $("#tabs a").eq(songIndex).addClass("active");
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
+
     var songUrl = "files/" + songs[currentIndex] + ".mp3";
+    if (audio.src !== songUrl) {
+      // Load the selected song
+      audio.src = songUrl;
+      audio.load();
+      if (isPlaying) {
+        audio.play();
+      }
+    } else {
+      if (!isPlaying) {
+        audio.pause();
+      }
+    }
   }
 
   audio.addEventListener("ended", function() {
@@ -165,8 +176,8 @@ $(document).ready(function() {
 
     // Update the recently played playlist immediately
     updateRecentlyPlayedPlaylist();
-  }
-
+  
+  } 
   function updateRecentlyPlayedPlaylist() {
     var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
     $(".recently-played-list").empty();
