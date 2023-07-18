@@ -3,8 +3,8 @@ $(document).ready(function() {
     "Bruce_Africa_-_You",
     "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
-	"Umjabulisi  Vuma Original Audio",
-	"Anga Nilavi Amapiano feat Tebza De DJ"
+    "Umjabulisi  Vuma Original Audio",
+    "Anga Nilavi Amapiano feat Tebza De DJ"
   ];
   var currentIndex = 0;
   var audio = new Audio();
@@ -33,6 +33,11 @@ $(document).ready(function() {
       return;
     }
 
+    var wasPlaying = isPlaying;
+    if (wasPlaying) {
+      audio.play();
+    }
+
     $(this).toggleClass("active");
     accordionContent.slideToggle(function() {
       isAccordionActive = accordionContent.is(":visible");
@@ -40,6 +45,9 @@ $(document).ready(function() {
         activePlaylist = accordionContent.find("ul");
         activeIndex = activePlaylist.find("li.active").index();
         loadSongFromPlaylist(activePlaylist, activeIndex);
+        if (wasPlaying) {
+          audio.play();
+        }
       }
     });
   });
@@ -58,45 +66,31 @@ $(document).ready(function() {
     $("#tabs a").eq(songIndex).addClass("active");
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
-
     var songUrl = "files/" + songs[currentIndex] + ".mp3";
-    if (audio.src !== songUrl) {
-      // Load the selected song
-      loadSong(songUrl);
-      playSong();
-    } else {
-      togglePlayPause();
-    }
-  }
-
-  function loadSong(songUrl) {
-    audio.src = songUrl;
-    audio.load();
   }
 
   audio.addEventListener("ended", function() {
     if (isRepeatCurrent) {
-      loadSong();
-      playSong();
+      audio.play();
     } else if (isShuffle) {
       var randomIndex = Math.floor(Math.random() * songs.length);
       currentIndex = randomIndex;
       loadSong();
-      playSong();
+      audio.play();
     } else if (isRepeatAll) {
       currentIndex++;
       if (currentIndex >= songs.length) {
         currentIndex = 0;
       }
       loadSong();
-      playSong();
+      audio.play();
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
-        pauseSong();
+        audio.pause();
       } else {
         loadSong();
-        playSong();
+        audio.play();
       }
     }
   });
