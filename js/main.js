@@ -211,7 +211,7 @@ $(document).ready(function() {
     $(".most-played-list").empty();
     for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
       var song = sortedSongs[i];
-      var li = $("<li>").text(song + " (" + mostPlayed[song] + ")");
+      var li = $("<li>").text(song + " (Played " + mostPlayed[song] + " Times)");
       if (i === currentIndex && $("#most-played-tab").hasClass("active")) {
         li.addClass("active");
       }
