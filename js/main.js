@@ -1,4 +1,3 @@
-
 function loadSongFromPlaylist(playlist, currentIndex) {
   var songs = playlist.find("li");
   songs.removeClass("active");
