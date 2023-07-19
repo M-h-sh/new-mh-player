@@ -15,6 +15,7 @@ function loadSongFromPlaylist(playlist, currentIndex) {
   $(".accordion-title").eq(songIndex).addClass("active");
   var songUrl = "files/" + songs[currentIndex] + ".mp3";
 }
+
 $(document).ready(function() {
   var songs = [
     "Bruce_Africa_-_You",
@@ -49,7 +50,7 @@ $(document).ready(function() {
   });
 
   // Event handler for accordion title click
- $(".accordion-title").click(function() {
+  $(".accordion-title").click(function() {
     var accordionContent = $(this).next(".accordion-content");
     if (accordionContent.is(":animated")) {
       return;
@@ -81,13 +82,34 @@ $(document).ready(function() {
     $(".accordion-content li:eq(" + currentIndex + ")").addClass("active");
 
     audio.src = songUrl;
+    audio.load(); // Load the audio
+
+    // Show loading indicator
+    $(".loading-indicator").show();
+    // Hide error message
+    $(".error-message").hide();
+
+    // Event listener for successful audio loading
+    audio.addEventListener("canplaythrough", function() {
+      $(".loading-indicator").hide();
+      playSong();
+    });
+
+    // Event listener for error during audio loading
+    audio.addEventListener("error", function() {
+      $(".loading-indicator").hide();
+      $(".error-message").show();
+    });
   }
 
   // Event handler for play button click
   function playSong() {
-    audio.play();
-    $("#play").html('<i class="fas fa-pause"></i>');
-    isPlaying = true;
+    audio.play().then(function() {
+      $("#play").html('<i class="fas fa-pause"></i>');
+      isPlaying = true;
+    }).catch(function(error) {
+      // Handle play error
+    });
   }
 
   // Event handler for pause button click
@@ -117,7 +139,6 @@ $(document).ready(function() {
       }
     }
     loadSong();
-    playSong();
   }
 
   // Event handler for previous button click
@@ -127,7 +148,6 @@ $(document).ready(function() {
       currentIndex = songs.length - 1;
     }
     loadSong();
-    playSong();
   }
 
   // Function to update the recently played songs
