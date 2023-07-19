@@ -1,13 +1,13 @@
 $(document).ready(function() {
   var songs = [
-    "Bruce_Africa_-_You",
-    "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
-    "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
-    "Umjabulisi  Vuma Original Audio",
-    "Anga Nilavi Amapiano feat Tebza De DJ",
-    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
-  ];
+    "Bruce_Africa_-_You",
+    "de-mthuda-da-muziqal-chef-eemoh-sgudi-snyc-ft-sipho-magudulela",
+    "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
+    "Umjabulisi  Vuma Original Audio",
+    "Anga Nilavi Amapiano feat Tebza De DJ",
+    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
+    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
+  ];
   var currentIndex = 0;
   var audio = new Audio();
   var isPlaying = false;
@@ -26,25 +26,16 @@ $(document).ready(function() {
     downloadSong();
   });
 
-  function loadSongFromPlaylist(playlist, currentIndex) {
-    var songs = playlist.find("li");
-    songs.removeClass("active");
-    songs.eq(currentIndex).addClass("active");
+  $(".accordion-title").click(function() {
+    $(this).toggleClass("active");
+    $(this).next(".accordion-content").toggleClass("show");
 
-    var song = songs.eq(currentIndex).text();
-    var songIndex = songs.eq(currentIndex).index();
-    $("#song-title").text(song);
-
-    // Update the tabs and other elements
-    $("#tabs a").removeClass("active");
-    $("#tabs a").eq(songIndex).addClass("active");
-    $(".accordion-title").removeClass("active");
-    $(".accordion-title").eq(songIndex).addClass("active");
-
-    // Load and play the selected song
-    loadSong();
-    playSong();
-  }
+    if ($(this).hasClass("active")) {
+      var playlist = $(this).next(".accordion-content").find("ul");
+      var currentIndex = playlist.find("li.active").index();
+      loadSongFromPlaylist(playlist, currentIndex);
+    }
+  });
 
   audio.addEventListener("ended", function() {
     if (isRepeatCurrent) {
@@ -78,11 +69,16 @@ $(document).ready(function() {
     $("#song-title").text(songs[currentIndex]);
     $(".playlist li").removeClass("active");
     $(".playlist li:eq(" + currentIndex + ")").addClass("active");
-    $(".playlist").scrollTop($(".playlist li.active").position().top - $(".playlist").position().top);
+    $(".accordion-content li").removeClass("active");
+    $(".accordion-content li:eq(" + currentIndex + ")").addClass("active");
+    $("#tabs li").removeClass("active");
+    $("#tabs li:eq(" + currentIndex + ")").addClass("active");
   }
 
   function playSong() {
-    audio.play();
+    audio.play().catch(function(error) {
+      console.log(error);
+    });
     $("#play").html('<i class="fas fa-pause"></i>');
     isPlaying = true;
   }
@@ -148,13 +144,13 @@ $(document).ready(function() {
     for (var i = 0; i < recentlyPlayed.length; i++) {
       var song = recentlyPlayed[i];
       var li = $("<li>").text(song);
-      if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
+      if (i === currentIndex) {
         li.addClass("active");
       }
       li.click(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
-        playSong();
+        togglePlayPause();
         var currentSong = songs[currentIndex];
         increasePlayCount(currentSong);
       });
@@ -183,14 +179,14 @@ $(document).ready(function() {
     for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
       var song = sortedSongs[i];
       var li = $("<li>").text(song + " (" + mostPlayed[song] + ")");
-      if (i === currentIndex && $("#most-played-tab").hasClass("active")) {
+      if (i === currentIndex) {
         li.addClass("active");
       }
       li.click(function() {
         var clickedSong = $(this).text().split(" (")[0];
         currentIndex = songs.indexOf(clickedSong);
         loadSong();
-        playSong();
+        togglePlayPause();
         increasePlayCount(clickedSong);
       });
       $(".most-played-list").append(li);
@@ -202,13 +198,13 @@ $(document).ready(function() {
     for (var i = 0; i < Math.min(recentlyPlayed.length, 2); i++) {
       var song = recentlyPlayed[i];
       var li = $("<li>").text(song);
-      if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
+      if (i === currentIndex) {
         li.addClass("active");
       }
       li.click(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
-        playSong();
+        togglePlayPause();
         var currentSong = songs[currentIndex];
         increasePlayCount(currentSong);
       });
@@ -218,13 +214,13 @@ $(document).ready(function() {
     for (var i = 0; i < songs.length; i++) {
       var song = songs[i];
       var li = $("<li>").text(song);
-      if (i === currentIndex && $("#all-songs-tab").hasClass("active")) {
+      if (i === currentIndex) {
         li.addClass("active");
       }
       li.click(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
-        playSong();
+        togglePlayPause();
         var currentSong = songs[currentIndex];
         increasePlayCount(currentSong);
       });
@@ -250,52 +246,12 @@ $(document).ready(function() {
     increasePlayCount(currentSong);
   });
 
-  $("#repeat-all").click(function() {
-    isRepeatAll = !isRepeatAll;
-    $(this).toggleClass("active", isRepeatAll);
-  });
-
-  $("#repeat-current").click(function() {
-    isRepeatCurrent = !isRepeatCurrent;
-    $(this).toggleClass("active", isRepeatCurrent);
-  });
-
-  $("#shuffle").click(function() {
-    isShuffle = !isShuffle;
-    $(this).toggleClass("active", isShuffle);
-  });
-
-  $("#volume").on("input", function() {
-    var volume = $(this).val();
-    audio.volume = volume;
-  });
-
   function updateProgressBar() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
     var progressPercentage = (currentTime / duration) * 100;
     $("#progress").css("width", progressPercentage + "%");
-    updateTimer(currentTime, duration);
-  }
-
-  function updateTimer(currentTime, duration) {
-    var currentMinutes = Math.floor(currentTime / 60);
-    var currentSeconds = Math.floor(currentTime % 60);
-    var durationMinutes = Math.floor(duration / 60);
-    var durationSeconds = Math.floor(duration % 60);
-    $("#timer").text(
-      currentMinutes +
-        ":" +
-        formatTime(currentSeconds) +
-        " / " +
-        durationMinutes +
-        ":" +
-        formatTime(durationSeconds)
-    );
-  }
-
-  function formatTime(time) {
-    return time < 10 ? "0" + time : time;
+    $("#timer").text(formatTime(currentTime) + " / " + formatTime(duration));
   }
 
   function seekSong(event) {
@@ -322,13 +278,13 @@ $(document).ready(function() {
     for (var i = 0; i < filteredSongs.length; i++) {
       var song = filteredSongs[i];
       var li = $("<li>").text(song);
-      if (i === currentIndex && $("#all-songs-tab").hasClass("active")) {
+      if (i === currentIndex) {
         li.addClass("active");
       }
       li.click(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
-        playSong();
+        togglePlayPause();
         var currentSong = songs[currentIndex];
         increasePlayCount(currentSong);
       });
@@ -365,8 +321,7 @@ $(document).ready(function() {
     var $activeItem = $(".playlist li.active");
     var containerTop = $(".playlist").scrollTop();
     var containerBottom = containerTop + $(".playlist").height();
-    var elemTop =
-      $activeItem.offset().top - $(".playlist").offset().top + containerTop;
+    var elemTop = $activeItem.offset().top - $(".playlist").offset().top + containerTop;
     var elemBottom = elemTop + $activeItem.height();
     if (elemTop < containerTop) {
       $(".playlist").scrollTop(elemTop);
@@ -397,9 +352,15 @@ $(document).ready(function() {
     var index = $activeItem.index();
     currentIndex = index;
     loadSong();
-    playSong();
-    var currentSong = songs[currentIndex];
-    increasePlayCount(currentSong);
+
+    // Toggle play/pause if the song is already playing
+    if (isPlaying && audio.src.includes(songs[currentIndex])) {
+      togglePlayPause();
+    } else {
+      playSong();
+      var currentSong = songs[currentIndex];
+      increasePlayCount(currentSong);
+    }
   }
 
   function hidePreloader() {
@@ -411,28 +372,13 @@ $(document).ready(function() {
   // Set preloader timer
   var preloaderTimer = setTimeout(hidePreloader, 1000);
 
-  // Load playlist and song
   loadPlaylist();
   loadSong();
 
-  // Handle tab click
-  $("#tabs a").click(function() {
-    var index = $(this).index();
-    currentIndex = index;
-    loadSongFromPlaylist($(".playlist"), index);
-    var currentSong = songs[currentIndex];
-    increasePlayCount(currentSong);
-  });
-
-  // Handle accordion title click
-  $(".accordion-title").click(function() {
-    var index = $(this).index();
-    currentIndex = index;
-    loadSongFromPlaylist($(".accordion-list"), index);
-    var currentSong = songs[currentIndex];
-    increasePlayCount(currentSong);
-  });
-
-  // Load recently played playlist
-  updateRecentlyPlayedPlaylist();
+  // Utility function to format time in mm:ss format
+  function formatTime(time) {
+    var minutes = Math.floor(time / 60);
+    var seconds = Math.floor(time % 60);
+    return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  }
 });
