@@ -5,8 +5,9 @@ $(document).ready(function() {
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
     "Anga Nilavi Amapiano feat Tebza De DJ",
-    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
+	"Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
+	"Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
+	
   ];
   var currentIndex = 0;
   var audio = new Audio();
@@ -14,6 +15,9 @@ $(document).ready(function() {
   var isRepeatAll = false;
   var isRepeatCurrent = false;
   var isShuffle = false;
+  var isAccordionActive = false;
+  var activePlaylist = null;
+  var activeIndex = 0;
 
   function downloadSong() {
     var downloadLink = document.createElement("a");
@@ -27,16 +31,28 @@ $(document).ready(function() {
   });
 
   $(".accordion-title").click(function() {
-    if (!isPlaying) {
-      $(this).toggleClass("active");
-      $(this).next(".accordion-content").toggleClass("show");
-
-      if ($(this).hasClass("active")) {
-        var playlist = $(this).next(".accordion-content").find("ul");
-        var currentIndex = playlist.find("li.active").index();
-        loadSongFromPlaylist(playlist, currentIndex);
-      }
+    var accordionContent = $(this).next(".accordion-content");
+    if (accordionContent.is(":animated")) {
+      return;
     }
+
+    var wasPlaying = isPlaying;
+    if (wasPlaying) {
+      audio.play();
+    }
+
+    $(this).toggleClass("active");
+    accordionContent.slideToggle(function() {
+      isAccordionActive = accordionContent.is(":visible");
+      if (isAccordionActive) {
+        activePlaylist = accordionContent.find("ul");
+        activeIndex = activePlaylist.find("li.active").index();
+        loadSongFromPlaylist(activePlaylist, activeIndex);
+        if (wasPlaying) {
+          audio.play();
+        }
+      }
+    });
   });
 
   function loadSongFromPlaylist(playlist, currentIndex) {
@@ -53,35 +69,31 @@ $(document).ready(function() {
     $("#tabs a").eq(songIndex).addClass("active");
     $(".accordion-title").removeClass("active");
     $(".accordion-title").eq(songIndex).addClass("active");
-
-    // Load and play the selected song
-    loadSong();
-    playSong();
+    var songUrl = "files/" + songs[currentIndex] + ".mp3";
   }
 
   audio.addEventListener("ended", function() {
     if (isRepeatCurrent) {
-      loadSong();
-      playSong();
+      audio.play();
     } else if (isShuffle) {
       var randomIndex = Math.floor(Math.random() * songs.length);
       currentIndex = randomIndex;
       loadSong();
-      playSong();
+      audio.play();
     } else if (isRepeatAll) {
       currentIndex++;
       if (currentIndex >= songs.length) {
         currentIndex = 0;
       }
       loadSong();
-      playSong();
+      audio.play();
     } else {
       currentIndex++;
       if (currentIndex >= songs.length) {
-        pauseSong();
+        audio.pause();
       } else {
         loadSong();
-        playSong();
+        audio.play();
       }
     }
   });
@@ -91,7 +103,8 @@ $(document).ready(function() {
     $("#song-title").text(songs[currentIndex]);
     $(".playlist li").removeClass("active");
     $(".playlist li:eq(" + currentIndex + ")").addClass("active");
-    $(".playlist").scrollTop($(".playlist li.active").position().top - $(".playlist").position().top);
+    $(".accordion-content li").removeClass("active");
+    $(".accordion-content li:eq(" + currentIndex + ")").addClass("active");
   }
 
   function playSong() {
@@ -403,9 +416,15 @@ $(document).ready(function() {
     var index = $activeItem.index();
     currentIndex = index;
     loadSong();
-    playSong();
-    var currentSong = songs[currentIndex];
-    increasePlayCount(currentSong);
+
+    // Toggle play/pause if the song is already playing
+    if (isPlaying && audio.src.includes(songs[currentIndex])) {
+      togglePlayPause();
+    } else {
+      playSong();
+      var currentSong = songs[currentIndex];
+      increasePlayCount(currentSong);
+    }
   }
 
   function hidePreloader() {
