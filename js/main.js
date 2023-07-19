@@ -27,13 +27,15 @@ $(document).ready(function() {
   });
 
   $(".accordion-title").click(function() {
-    $(this).toggleClass("active");
-    $(this).next(".accordion-content").toggleClass("show");
+    if (!isPlaying) {
+      $(this).toggleClass("active");
+      $(this).next(".accordion-content").toggleClass("show");
 
-    if ($(this).hasClass("active")) {
-      var playlist = $(this).next(".accordion-content").find("ul");
-      var currentIndex = playlist.find("li.active").index();
-      loadSongFromPlaylist(playlist, currentIndex);
+      if ($(this).hasClass("active")) {
+        var playlist = $(this).next(".accordion-content").find("ul");
+        var currentIndex = playlist.find("li.active").index();
+        loadSongFromPlaylist(playlist, currentIndex);
+      }
     }
   });
 
@@ -89,6 +91,7 @@ $(document).ready(function() {
     $("#song-title").text(songs[currentIndex]);
     $(".playlist li").removeClass("active");
     $(".playlist li:eq(" + currentIndex + ")").addClass("active");
+    $(".playlist").scrollTop($(".playlist li.active").position().top - $(".playlist").position().top);
   }
 
   function playSong() {
