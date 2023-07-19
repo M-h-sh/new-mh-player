@@ -1,3 +1,20 @@
+
+function loadSongFromPlaylist(playlist, currentIndex) {
+  var songs = playlist.find("li");
+  songs.removeClass("active");
+  songs.eq(currentIndex).addClass("active");
+
+  var song = songs.eq(currentIndex).text();
+  var songIndex = songs.eq(currentIndex).index();
+  $("#song-title").text(song);
+
+  // Update the tabs and other elements
+  $("#tabs a").removeClass("active");
+  $("#tabs a").eq(songIndex).addClass("active");
+  $(".accordion-title").removeClass("active");
+  $(".accordion-title").eq(songIndex).addClass("active");
+  var songUrl = "files/" + songs[currentIndex] + ".mp3";
+}
 $(document).ready(function() {
   var songs = [
     "Bruce_Africa_-_You",
@@ -5,10 +22,10 @@ $(document).ready(function() {
     "Tebza_De_DJ_ft_DJ_Nomza_The_King_-_Ka_Valungu_Remix",
     "Umjabulisi  Vuma Original Audio",
     "Anga Nilavi Amapiano feat Tebza De DJ",
-	"Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
-	"Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
-	
+    "Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
+    "Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee"
   ];
+
   var currentIndex = 0;
   var audio = new Audio();
   var isPlaying = false;
@@ -19,6 +36,7 @@ $(document).ready(function() {
   var activePlaylist = null;
   var activeIndex = 0;
 
+  // Function to download the current song
   function downloadSong() {
     var downloadLink = document.createElement("a");
     downloadLink.href = "files/" + songs[currentIndex] + ".mp3";
@@ -30,7 +48,8 @@ $(document).ready(function() {
     downloadSong();
   });
 
-  $(".accordion-title").click(function() {
+  // Event handler for accordion title click
+ $(".accordion-title").click(function() {
     var accordionContent = $(this).next(".accordion-content");
     if (accordionContent.is(":animated")) {
       return;
@@ -47,78 +66,38 @@ $(document).ready(function() {
       if (isAccordionActive) {
         activePlaylist = accordionContent.find("ul");
         activeIndex = activePlaylist.find("li.active").index();
-        loadSongFromPlaylist(activePlaylist, activeIndex);
-        if (wasPlaying) {
-          audio.play();
-        }
       }
     });
   });
 
-  function loadSongFromPlaylist(playlist, currentIndex) {
-    var songs = playlist.find("li");
-    songs.removeClass("active");
-    songs.eq(currentIndex).addClass("active");
-
-    var song = songs.eq(currentIndex).text();
-    var songIndex = songs.eq(currentIndex).index();
-    $("#song-title").text(song);
-
-    // Update the tabs and other elements
-    $("#tabs a").removeClass("active");
-    $("#tabs a").eq(songIndex).addClass("active");
-    $(".accordion-title").removeClass("active");
-    $(".accordion-title").eq(songIndex).addClass("active");
-    var songUrl = "files/" + songs[currentIndex] + ".mp3";
-  }
-
-  audio.addEventListener("ended", function() {
-    if (isRepeatCurrent) {
-      audio.play();
-    } else if (isShuffle) {
-      var randomIndex = Math.floor(Math.random() * songs.length);
-      currentIndex = randomIndex;
-      loadSong();
-      audio.play();
-    } else if (isRepeatAll) {
-      currentIndex++;
-      if (currentIndex >= songs.length) {
-        currentIndex = 0;
-      }
-      loadSong();
-      audio.play();
-    } else {
-      currentIndex++;
-      if (currentIndex >= songs.length) {
-        audio.pause();
-      } else {
-        loadSong();
-        audio.play();
-      }
-    }
-  });
-
+  // Function to load the current song
   function loadSong() {
-    audio.src = "files/" + songs[currentIndex] + ".mp3";
-    $("#song-title").text(songs[currentIndex]);
+    var song = songs[currentIndex];
+    var songUrl = "files/" + song + ".mp3";
+    $("#song-title").text(song);
     $(".playlist li").removeClass("active");
     $(".playlist li:eq(" + currentIndex + ")").addClass("active");
     $(".accordion-content li").removeClass("active");
     $(".accordion-content li:eq(" + currentIndex + ")").addClass("active");
+
+    audio.src = songUrl;
   }
 
+  // Event handler for play button click
   function playSong() {
     audio.play();
     $("#play").html('<i class="fas fa-pause"></i>');
     isPlaying = true;
   }
 
+  // Event handler for pause button click
   function pauseSong() {
     audio.pause();
     $("#play").html('<i class="fas fa-play"></i>');
     isPlaying = false;
   }
 
+  // Event handler for toggle play/pause button click
   function togglePlayPause() {
     if (isPlaying) {
       pauseSong();
@@ -127,6 +106,7 @@ $(document).ready(function() {
     }
   }
 
+  // Event handler for next button click
   function nextSong() {
     if (isShuffle) {
       currentIndex = Math.floor(Math.random() * songs.length);
@@ -140,6 +120,7 @@ $(document).ready(function() {
     playSong();
   }
 
+  // Event handler for previous button click
   function prevSong() {
     currentIndex--;
     if (currentIndex < 0) {
@@ -149,6 +130,7 @@ $(document).ready(function() {
     playSong();
   }
 
+  // Function to update the recently played songs
   function updateRecentlyPlayed() {
     var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
     if (!recentlyPlayed.includes(songs[currentIndex])) {
@@ -168,6 +150,7 @@ $(document).ready(function() {
     updateRecentlyPlayedPlaylist();
   }
 
+  // Function to update the recently played playlist
   function updateRecentlyPlayedPlaylist() {
     var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
     $(".recently-played-list").empty();
@@ -181,13 +164,13 @@ $(document).ready(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
-        var currentSong = songs[currentIndex];
-        increasePlayCount(currentSong);
+        increasePlayCount(song);
       });
       $(".recently-played-list").append(li);
     }
   }
 
+  // Function to increase the play count for a song
   function increasePlayCount(song) {
     var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
     if (mostPlayed[song]) {
@@ -200,6 +183,7 @@ $(document).ready(function() {
     updateMostPlayed();
   }
 
+  // Function to update the most played songs
   function updateMostPlayed() {
     var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
     var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
@@ -223,6 +207,7 @@ $(document).ready(function() {
     }
   }
 
+  // Function to load the playlist
   function loadPlaylist() {
     var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
     for (var i = 0; i < Math.min(recentlyPlayed.length, 2); i++) {
@@ -235,8 +220,7 @@ $(document).ready(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
-        var currentSong = songs[currentIndex];
-        increasePlayCount(currentSong);
+        increasePlayCount(song);
       });
       $(".recently-played-list").append(li);
     }
@@ -251,51 +235,58 @@ $(document).ready(function() {
         currentIndex = songs.indexOf($(this).text());
         loadSong();
         playSong();
-        var currentSong = songs[currentIndex];
-        increasePlayCount(currentSong);
+        increasePlayCount(song);
       });
       $(".playlist").append(li);
     }
   }
 
+  // Event handler for play button click
   $("#play").click(function() {
     togglePlayPause();
     var currentSong = songs[currentIndex];
     increasePlayCount(currentSong);
   });
 
+  // Event handler for next button click
   $("#next").click(function() {
     nextSong();
     var currentSong = songs[currentIndex];
     increasePlayCount(currentSong);
   });
 
+  // Event handler for previous button click
   $("#prev").click(function() {
     prevSong();
     var currentSong = songs[currentIndex];
     increasePlayCount(currentSong);
   });
 
+  // Event handler for repeat all button click
   $("#repeat-all").click(function() {
     isRepeatAll = !isRepeatAll;
     $(this).toggleClass("active", isRepeatAll);
   });
 
+  // Event handler for repeat current button click
   $("#repeat-current").click(function() {
     isRepeatCurrent = !isRepeatCurrent;
     $(this).toggleClass("active", isRepeatCurrent);
   });
 
+  // Event handler for shuffle button click
   $("#shuffle").click(function() {
     isShuffle = !isShuffle;
     $(this).toggleClass("active", isShuffle);
   });
 
+  // Event handler for volume input change
   $("#volume").on("input", function() {
     var volume = $(this).val();
     audio.volume = volume;
   });
 
+  // Function to update the progress bar
   function updateProgressBar() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
@@ -304,6 +295,7 @@ $(document).ready(function() {
     updateTimer(currentTime, duration);
   }
 
+  // Function to update the timer display
   function updateTimer(currentTime, duration) {
     var currentMinutes = Math.floor(currentTime / 60);
     var currentSeconds = Math.floor(currentTime % 60);
@@ -314,10 +306,12 @@ $(document).ready(function() {
     );
   }
 
+  // Function to format time with leading zeros
   function formatTime(time) {
     return time < 10 ? "0" + time : time;
   }
 
+  // Function to seek the song by clicking on the timer
   function seekSong(event) {
     var timerWidth = $("#timer").width();
     var clickX = event.pageX - $(this).offset().left;
@@ -328,10 +322,12 @@ $(document).ready(function() {
 
   $("#timer").click(seekSong);
 
+  // Event listener for time update of the song
   audio.addEventListener("timeupdate", function() {
     updateProgressBar();
   });
 
+  // Function to search songs
   function searchSongs(searchTerm) {
     var filteredSongs = songs.filter(function(song) {
       return song.toLowerCase().includes(searchTerm.toLowerCase());
@@ -356,11 +352,13 @@ $(document).ready(function() {
     }
   }
 
+  // Event handler for search input change
   $("#search-input").on("input", function() {
     var searchTerm = $(this).val();
     searchSongs(searchTerm);
   });
 
+  // Function to highlight the previous song in the playlist
   function highlightPreviousSong() {
     var $currentItem = $(".playlist li.active");
     var $prevItem = $currentItem.prev();
@@ -371,6 +369,7 @@ $(document).ready(function() {
     }
   }
 
+  // Function to highlight the next song in the playlist
   function highlightNextSong() {
     var $currentItem = $(".playlist li.active");
     var $nextItem = $currentItem.next();
@@ -381,6 +380,7 @@ $(document).ready(function() {
     }
   }
 
+  // Function to scroll to the active item in the playlist
   function scrollToActiveItem() {
     var $activeItem = $(".playlist li.active");
     var containerTop = $(".playlist").scrollTop();
@@ -394,6 +394,7 @@ $(document).ready(function() {
     }
   }
 
+  // Event listener for keydown events
   $(document).keydown(function(e) {
     switch (e.which) {
       case 38: // Up arrow key
@@ -411,22 +412,16 @@ $(document).ready(function() {
     e.preventDefault(); // Prevent the default action (scrolling) from occurring
   });
 
-  function selectHighlightedSong() {
-    var $activeItem = $(".playlist li.active");
-    var index = $activeItem.index();
-    currentIndex = index;
+  // Event listener for click on playlist items
+  $(".playlist li").click(function() {
+    currentIndex = $(this).index();
     loadSong();
+    playSong();
+    var currentSong = songs[currentIndex];
+    increasePlayCount(currentSong);
+  });
 
-    // Toggle play/pause if the song is already playing
-    if (isPlaying && audio.src.includes(songs[currentIndex])) {
-      togglePlayPause();
-    } else {
-      playSong();
-      var currentSong = songs[currentIndex];
-      increasePlayCount(currentSong);
-    }
-  }
-
+  // Function to hide the preloader
   function hidePreloader() {
     $("#preloader").fadeOut(500, function() {
       $(this).remove();
@@ -438,4 +433,6 @@ $(document).ready(function() {
 
   loadPlaylist();
   loadSong();
+  updateRecentlyPlayed();
+  updateMostPlayed();
 });
