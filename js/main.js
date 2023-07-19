@@ -26,19 +26,6 @@ $(document).ready(function() {
     downloadSong();
   });
 
-  $(".accordion-title").click(function() {
-    if (!isPlaying) {
-      $(this).toggleClass("active");
-      $(this).next(".accordion-content").toggleClass("show");
-
-      if ($(this).hasClass("active")) {
-        var playlist = $(this).next(".accordion-content").find("ul");
-        var currentIndex = playlist.find("li.active").index();
-        loadSongFromPlaylist(playlist, currentIndex);
-      }
-    }
-  });
-
   function loadSongFromPlaylist(playlist, currentIndex) {
     var songs = playlist.find("li");
     songs.removeClass("active");
@@ -297,7 +284,13 @@ $(document).ready(function() {
     var durationMinutes = Math.floor(duration / 60);
     var durationSeconds = Math.floor(duration % 60);
     $("#timer").text(
-      currentMinutes + ":" + formatTime(currentSeconds) + " / " + durationMinutes + ":" + formatTime(durationSeconds)
+      currentMinutes +
+        ":" +
+        formatTime(currentSeconds) +
+        " / " +
+        durationMinutes +
+        ":" +
+        formatTime(durationSeconds)
     );
   }
 
@@ -372,7 +365,8 @@ $(document).ready(function() {
     var $activeItem = $(".playlist li.active");
     var containerTop = $(".playlist").scrollTop();
     var containerBottom = containerTop + $(".playlist").height();
-    var elemTop = $activeItem.offset().top - $(".playlist").offset().top + containerTop;
+    var elemTop =
+      $activeItem.offset().top - $(".playlist").offset().top + containerTop;
     var elemBottom = elemTop + $activeItem.height();
     if (elemTop < containerTop) {
       $(".playlist").scrollTop(elemTop);
@@ -417,6 +411,28 @@ $(document).ready(function() {
   // Set preloader timer
   var preloaderTimer = setTimeout(hidePreloader, 1000);
 
+  // Load playlist and song
   loadPlaylist();
   loadSong();
+
+  // Handle tab click
+  $("#tabs a").click(function() {
+    var index = $(this).index();
+    currentIndex = index;
+    loadSongFromPlaylist($(".playlist"), index);
+    var currentSong = songs[currentIndex];
+    increasePlayCount(currentSong);
+  });
+
+  // Handle accordion title click
+  $(".accordion-title").click(function() {
+    var index = $(this).index();
+    currentIndex = index;
+    loadSongFromPlaylist($(".accordion-list"), index);
+    var currentSong = songs[currentIndex];
+    increasePlayCount(currentSong);
+  });
+
+  // Load recently played playlist
+  updateRecentlyPlayedPlaylist();
 });
