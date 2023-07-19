@@ -74,7 +74,9 @@ body {
 .accordion-content {
   display: none;
 }
-
+.bg-light2{
+	background-color:#f1f1f1;
+}
 .accordion-content.show {
   display: block;
 }
@@ -118,14 +120,13 @@ body {
 }
 
 .nav-tabs .nav-link.active {
-  background-color: #fff;
+  background-color:#fff;
   color: #fff;
 }
 
 .playlist {
   list-style: none;
   padding: 0;
-  background-color: #fff;
   margin-top: 20px;
   text-align: left;
   max-height: 300px;
@@ -194,7 +195,6 @@ body {
 .recently-played-list {
   list-style: none;
   padding: 10px;
-  background-color: #fff;
   margin-top: 20px;
   text-align: left;
   max-height: 300px;
