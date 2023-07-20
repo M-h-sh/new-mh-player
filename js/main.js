@@ -35,6 +35,52 @@ $(document).ready(function() {
   var isAccordionActive = false;
   var activePlaylist = null;
   var activeIndex = 0;
+  
+  
+// Function to apply the selected theme
+// JavaScript
+const themeToggle = document.getElementById('theme-toggle');
+const sunIcon = document.querySelector('.fa-sun');
+const moonIcon = document.querySelector('.fa-moon');
+const activeTab = document.querySelector('.active-tab');
+
+function applyTheme(themeName) {
+  if (themeName === 'theme1') {
+    // Light mode
+    $("#player").removeClass("bg-dark").addClass("bg-light");
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'inline-block';
+  } else if (themeName === 'theme2') {
+    // Dark mode
+    $("#player").removeClass("bg-light").addClass("bg-dark");
+    sunIcon.style.display = 'inline-block';
+    moonIcon.style.display = 'none';
+  }
+   if (themeName === 'theme1') {
+    // Light mode
+    activeTab.classList.remove('active-tab');
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'inline-block';
+  } else if (themeName === 'theme2') {
+    // Dark mode
+    activeTab.classList.remove('active-tab');
+    sunIcon.style.display = 'inline-block';
+    moonIcon.style.display = 'none';
+  }
+}
+  
+
+function setTheme(event) {
+	
+  const selectedTheme = event.target.checked ? 'theme2' : 'theme1';
+  applyTheme(selectedTheme);
+}
+
+themeToggle.addEventListener('change', setTheme);
+
+// Load the default theme (light mode) on page load
+applyTheme('theme1');
+
 
   // Function to download the current song
   function downloadSong() {
@@ -89,10 +135,28 @@ $(document).ready(function() {
     $(".error-message").hide();
 
     // Event listener for successful audio loading
-    audio.addEventListener("canplaythrough", function() {
-      $(".loading-indicator").hide();
-      playSong();
-    });
+    audio.addEventListener("ended", function() {
+  if (isRepeatCurrent) {
+    // If repeat current song is enabled, replay the current song
+    playSong();
+  } else if (isRepeatAll) {
+    // If repeat all songs is enabled, play the next song
+    nextSong();
+    playSong();
+  } else if (!isShuffle) {
+    // If shuffle is not enabled, play the next song
+    nextSong();
+    playSong();
+  } else {
+    // If shuffle is enabled, randomly select the next song
+    currentIndex = Math.floor(Math.random() * songs.length);
+    loadSong();
+    playSong();
+  }
+
+  // Update the recently played playlist immediately after autoplaying next song
+  updateRecentlyPlayedPlaylist();
+});
 
     // Event listener for error during audio loading
     audio.addEventListener("error", function() {
