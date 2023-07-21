@@ -152,7 +152,7 @@ input:checked + .slider:before {
 }
 
 
-.all{
+#all{
 	background-color:white;
 } 
 #player {
@@ -304,13 +304,10 @@ input:checked + .slider:before {
 }
 
 /* Dark Mode */
-.bg-dark body.bg-light{
-	background-color:#121212
-}
-.bg-dark.all{
-  background-color:#121212; /* Instagram dark background color */
- 
-}
+.bg-dark #all{
+
+background-color: #121212;
+} 
 
 .bg-dark .spinner {
   border-color: #ffffff; /* TickTock white color */
