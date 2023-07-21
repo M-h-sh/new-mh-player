@@ -305,7 +305,7 @@ input:checked + .slider:before {
 
 /* Dark Mode */
 .bg-dark.all{
-  background-color: purple; /* Instagram dark background color */
+  background-color:#121212; /* Instagram dark background color */
  
 }
 
