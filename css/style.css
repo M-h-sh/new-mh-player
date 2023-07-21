@@ -186,6 +186,7 @@ input:checked + .slider:before {
 .accordion-title.active {
   background-color: black;
   color: #fff;
+font-weight:bold;
 }
 
 
