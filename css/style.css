@@ -348,7 +348,7 @@ input:checked + .slider:before {
   color: #ffffff; /* TickTock white text color */
 }
 .bg-dark .accordion-title.active {
-  background-color: gray;
+  background-color:#6C757D;
   color: #fff;
 }
 .bg-dark .playlist li.active {
