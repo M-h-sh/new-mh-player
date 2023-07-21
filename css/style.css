@@ -16,7 +16,7 @@ body {
 .theme-switch {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 50px;
   height: 24px;
 }
 
@@ -152,7 +152,9 @@ input:checked + .slider:before {
 }
 
 
-
+.all{
+	background-color:white;
+} 
 #player {
   max-width: 500px;
   width: 100%;
@@ -302,9 +304,9 @@ input:checked + .slider:before {
 }
 
 /* Dark Mode */
-.bg-dark body {
+.bg-dark.all{
   background-color: purple; /* Instagram dark background color */
-  color: #fff; /* Instagram white text color */
+ 
 }
 
 .bg-dark .spinner {
