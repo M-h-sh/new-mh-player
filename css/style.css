@@ -308,7 +308,7 @@ input:checked + .slider:before {
 
 background-color:#330d0d;
 } 
-.bg-dark body{
+.bg-dark body #all{
 	background-color:#330d0d;
 }
 
