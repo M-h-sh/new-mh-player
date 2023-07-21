@@ -47,14 +47,14 @@ const activeTab = document.querySelector('.active-tab');
 function applyTheme(themeName) {
   if (themeName === 'theme1') {
     // Light mode
-    $("#player").removeClass("bg-dark").addClass("bg-white");
-$("#all").removeClass("bg-secondary").addClass("bg-light");
+    $("#player").removeClass("bg-dark").addClass("bg-light");
+$("#all").removeClass("bg-secondary").addClass("bg-white");
     sunIcon.style.display = 'none';
     moonIcon.style.display = 'inline-block';
   } else if (themeName === 'theme2') {
     // Dark mode
-    $("#player").removeClass("bg-white").addClass("bg-dark");
-$("#all").removeClass("bg-light").addClass("bg-secondary");
+    $("#player").removeClass("bg-light").addClass("bg-dark");
+$("#all").removeClass("bg-white").addClass("bg-secondary");
 
     sunIcon.style.display = 'inline-block';
     moonIcon.style.display = 'none';
