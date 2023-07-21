@@ -180,7 +180,7 @@ input:checked + .slider:before {
   margin-top: 20px;
 }
 .accordion-title{
-  background-color: gray;
+  background-color:#E4A11B;
   color: #fff;
 }
 .accordion-title.active {
