@@ -25,7 +25,8 @@ $(document).ready(function() {
 		"Focalistic EeQue  Thama Tee  Khekheleza Dlala Dlala Official Visualizer",
 		"Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee",
 		"Casswell P  Master KG  Mangihlale Feat Lwami Official Audio",
-		"Wanitwa MosMaster KG  Seemah  Thando Feat Lowsheen Official Audio"
+		"Wanitwa MosMaster KG  Seemah  Thando Feat Lowsheen Official Audio",
+		"Malume Nta Swi Byela Mani Revisit"
 	];
 
 	var currentIndex = 0;
