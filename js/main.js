@@ -27,7 +27,8 @@ $(document).ready(function() {
 		"Casswell P  Master KG  Mangihlale Feat Lwami Official Audio",
 		"Wanitwa MosMaster KG  Seemah  Thando Feat Lowsheen Official Audio",
 		"Malume Nta Swi Byela Mani Revisit",
-		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef"
+		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef",
+		"Kunkra"
 	];
 
 	var currentIndex = 0;
