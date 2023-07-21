@@ -28,7 +28,8 @@ $(document).ready(function() {
 		"Wanitwa MosMaster KG  Seemah  Thando Feat Lowsheen Official Audio",
 		"Malume Nta Swi Byela Mani Revisit",
 		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef",
-		"Kunkra"
+		"Kunkra",
+		"Ka Gaza feat DJ Nomza The King"
 	];
 
 	var currentIndex = 0;
