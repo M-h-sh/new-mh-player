@@ -26,7 +26,8 @@ $(document).ready(function() {
 		"Tyler ICU  Tumela ZA  Mnike Official Audio feat DJ MaphorisaNandipha808 Ceeka RSA  Tyron Dee",
 		"Casswell P  Master KG  Mangihlale Feat Lwami Official Audio",
 		"Wanitwa MosMaster KG  Seemah  Thando Feat Lowsheen Official Audio",
-		"Malume Nta Swi Byela Mani Revisit"
+		"Malume Nta Swi Byela Mani Revisit",
+		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef"
 	];
 
 	var currentIndex = 0;
