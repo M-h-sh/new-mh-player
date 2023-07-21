@@ -48,11 +48,14 @@ function applyTheme(themeName) {
   if (themeName === 'theme1') {
     // Light mode
     $("#player").removeClass("bg-dark").addClass("bg-light");
+$("#all").removeClass("bg-dark").addClass("bg-light");
     sunIcon.style.display = 'none';
     moonIcon.style.display = 'inline-block';
   } else if (themeName === 'theme2') {
     // Dark mode
     $("#player").removeClass("bg-light").addClass("bg-dark");
+$("#all").removeClass("bg-light").addClass("bg-dark");
+
     sunIcon.style.display = 'inline-block';
     moonIcon.style.display = 'none';
   }
