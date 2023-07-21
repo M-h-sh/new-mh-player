@@ -16,7 +16,7 @@ body {
 .theme-switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 40px;
   height: 24px;
 }
 
@@ -302,8 +302,8 @@ input:checked + .slider:before {
 }
 
 /* Dark Mode */
-body.bg-dark {
-  background-color: #121212; /* Instagram dark background color */
+.bg-dark body {
+  background-color: purple; /* Instagram dark background color */
   color: #fff; /* Instagram white text color */
 }
 
