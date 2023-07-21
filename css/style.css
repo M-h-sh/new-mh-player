@@ -306,7 +306,7 @@ input:checked + .slider:before {
 /* Dark Mode */
 .bg-dark #all{
 
-background-color:#383740;
+background-color:#1a1212;
 } 
 
 .bg-dark .spinner {
