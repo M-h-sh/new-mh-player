@@ -29,7 +29,8 @@ $(document).ready(function() {
 		"Malume Nta Swi Byela Mani Revisit",
 		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef",
 		"Kunkra",
-		"Ka Gaza feat DJ Nomza The King"
+		"Ka Gaza feat DJ Nomza The King",
+		"major-keys-forever-yena"
 	];
 
 	var currentIndex = 0;
