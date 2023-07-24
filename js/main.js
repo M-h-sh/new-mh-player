@@ -32,7 +32,9 @@ $(document).ready(function() {
 		"Ka Gaza feat DJ Nomza The King",
 		"major-keys-forever-yena",
 		"SUKA feat Nandipha808 Ceeka RSA",
-		"Myztro Ah Ah"
+		"Myztro Ah Ah",
+		"Swa Ku Lungha feat Tebza De DJ",
+		"Lufuno"
 	];
 
 	var currentIndex = 0;
