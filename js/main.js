@@ -30,7 +30,8 @@ $(document).ready(function() {
 		"Sam Deep Eemoh  iMpumelelo Visualizer ft Da Muziqal Chef",
 		"Kunkra",
 		"Ka Gaza feat DJ Nomza The King",
-		"major-keys-forever-yena"
+		"major-keys-forever-yena",
+		"Myztro Ah Ah"
 	];
 
 	var currentIndex = 0;
