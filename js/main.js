@@ -31,6 +31,7 @@ $(document).ready(function() {
 		"Kunkra",
 		"Ka Gaza feat DJ Nomza The King",
 		"major-keys-forever-yena",
+		"SUKA feat Nandipha808 Ceeka RSA",
 		"Myztro Ah Ah"
 	];
 
