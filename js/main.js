@@ -519,14 +519,12 @@ $(document).ready(function() {
 	});
 
 	// Function to hide the preloader
-	function hidePreloader() {
-		$("#preloader").fadeOut(500, function() {
-			$(this).remove();
-		});
-	}
-
-	// Set preloader timer
-	var preloaderTimer = setTimeout(hidePreloader, 1000);
+	 let preloader = select('#preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.remove()
+        });
+    }
 
 	loadPlaylist();
 	loadSong();
