@@ -34,7 +34,9 @@ $(document).ready(function() {
 		"SUKA feat Nandipha808 Ceeka RSA",
 		"Myztro Ah Ah",
 		"Swa Ku Lungha feat Tebza De DJ",
-		"Lufuno"
+		"Lufuno",
+		"Thee Legacy ft Mnqobi Yao  Hlala Nami Official Music Video",
+		"Dubula Harry Cane Master KG DJ Latimmy"
 	];
 
 	var currentIndex = 0;
