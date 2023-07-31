@@ -36,7 +36,8 @@ $(document).ready(function() {
 		"Swa Ku Lungha feat Tebza De DJ",
 		"Lufuno",
 		"Thee Legacy ft Mnqobi Yao  Hlala Nami Official Music Video",
-		"Dubula Harry Cane Master KG DJ Latimmy"
+		"Dubula Harry Cane Master KG DJ Latimmy",
+		"Jay Music  2wobunnies  Casablanca Official Audio ft Tremic Dah Rockstar  Amapiano song"
 	];
 
 	var currentIndex = 0;
