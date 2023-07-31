@@ -38,7 +38,8 @@ $(document).ready(function() {
 		"Thee Legacy ft Mnqobi Yao  Hlala Nami Official Music Video",
 		"Dubula Harry Cane Master KG DJ Latimmy",
 		"Jay Music  2wobunnies  Casablanca Official Audio ft Tremic Dah Rockstar  Amapiano song",
-		"Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio"
+		"Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio",
+		"Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial"
 	];
 
 	var currentIndex = 0;
