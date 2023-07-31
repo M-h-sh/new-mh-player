@@ -39,7 +39,8 @@ $(document).ready(function() {
 		"Dubula Harry Cane Master KG DJ Latimmy",
 		"Jay Music  2wobunnies  Casablanca Official Audio ft Tremic Dah Rockstar  Amapiano song",
 		"Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio",
-		"Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial"
+		"Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial",
+		"Kabza De Small  Njelic  Nana Thula Remix feat Young Stunna  Nkosazana Daughter"
 	];
 
 	var currentIndex = 0;
