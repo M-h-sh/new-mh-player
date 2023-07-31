@@ -37,7 +37,8 @@ $(document).ready(function() {
 		"Lufuno",
 		"Thee Legacy ft Mnqobi Yao  Hlala Nami Official Music Video",
 		"Dubula Harry Cane Master KG DJ Latimmy",
-		"Jay Music  2wobunnies  Casablanca Official Audio ft Tremic Dah Rockstar  Amapiano song"
+		"Jay Music  2wobunnies  Casablanca Official Audio ft Tremic Dah Rockstar  Amapiano song",
+		"Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio"
 	];
 
 	var currentIndex = 0;
