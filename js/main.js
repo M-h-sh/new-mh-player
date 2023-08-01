@@ -336,7 +336,7 @@ $(document).ready(function() {
     function loadPlaylist() {
         // Clear the existing playlist
 		 var totalCount = songs.length;
-    $(".all-songs-total").text("" + totalCount);
+    $(".all-songs-total").text("Total Songs:" + totalCount);
 
     for (var i = 0; i < songs.length; i++) {
         $(".playlist").empty();
