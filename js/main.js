@@ -41,7 +41,7 @@ $(document).ready(function() {
         "Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio",
         "Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial",
         "Kabza De Small  Njelic  Nana Thula Remix feat Young Stunna  Nkosazana Daughter",
-        "YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito"
+		"YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito"
     ];
 
 
@@ -257,6 +257,12 @@ $(document).ready(function() {
 
     // Function to update the recently played playlist
     function updateRecentlyPlayedPlaylist() {
+		var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    $(".recently-played-list").empty();
+    var totalCount = recentlyPlayed.length;
+    $(".recently-played-total").text("Total: " + totalCount);
+
+    for (var i = 0; i < recentlyPlayed.length; i++) {
         var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
         $(".recently-played-list").empty();
         for (var i = 0; i < recentlyPlayed.length; i++) {
@@ -273,6 +279,7 @@ $(document).ready(function() {
             });
             $(".recently-played-list").append(li);
         }
+	}
     }
 
 
@@ -293,6 +300,15 @@ $(document).ready(function() {
 
     // Function to update the most played songs
     function updateMostPlayed() {
+		 var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
+    var sortedSongs = Object.keys(mostPlayed).sort(function (a, b) {
+      return mostPlayed[b] - mostPlayed[a];
+    });
+    $(".most-played-list").empty();
+    var totalCount = sortedSongs.length;
+    $(".most-played-total").text("Total: " + totalCount);
+
+    for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
         var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
         var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
             return mostPlayed[b] - mostPlayed[a];
@@ -313,11 +329,16 @@ $(document).ready(function() {
             });
             $(".most-played-list").append(li);
         }
+	}
     }
 
     // Function to load the playlist
     function loadPlaylist() {
         // Clear the existing playlist
+		 var totalCount = songs.length;
+    $(".all-songs-total").text("" + totalCount);
+
+    for (var i = 0; i < songs.length; i++) {
         $(".playlist").empty();
 
         // Load the default playlist
@@ -353,6 +374,7 @@ $(document).ready(function() {
             });
             $(".playlist").append(li);
         }
+	}
     }
     // Function to load the next song
     function loadNextSong() {
