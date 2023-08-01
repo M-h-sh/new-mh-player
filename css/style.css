@@ -327,4 +327,10 @@ body {
      background-color: #db0036;
      color: #ffffff;
 }
+.bg-dark .all-songs-total{
+     color:#fff;
+}
+.bg-dark .totalsongs{
+     color:#fff;
+}
  
