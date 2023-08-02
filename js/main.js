@@ -36,12 +36,12 @@ $(document).ready(function() {
         "Swa Ku Lungha feat Tebza De DJ",
         "Lufuno",
         "Thee Legacy ft Mnqobi Yao  Hlala Nami Official Music Video",
-        "Dubula Harry Cane Master KG DJ Latimmy",
+        "Harry Cane x Master KG  Dj LaTimmy  Dubula Official Audio",
         "Jay Music 2wobunnies Casablanca Official Audio ft Tremic Dah Rockstar Amapiano song",
         "Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio",
         "Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial",
         "Kabza De Small  Njelic  Nana Thula Remix feat Young Stunna  Nkosazana Daughter",
-		"YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito"
+        "YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito"
     ];
 
 
@@ -257,29 +257,29 @@ $(document).ready(function() {
 
     // Function to update the recently played playlist
     function updateRecentlyPlayedPlaylist() {
-		var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-    $(".recently-played-list").empty();
-    var totalCount = recentlyPlayed.length;
-    $(".recently-played-total").text("Total: " + totalCount);
-
-    for (var i = 0; i < recentlyPlayed.length; i++) {
         var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
         $(".recently-played-list").empty();
+        var totalCount = recentlyPlayed.length;
+        $(".recently-played-total").text("Total: " + totalCount);
+
         for (var i = 0; i < recentlyPlayed.length; i++) {
-            var song = recentlyPlayed[i];
-            var li = $("<li>").text(song);
-            if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
-                li.addClass("active");
+            var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+            $(".recently-played-list").empty();
+            for (var i = 0; i < recentlyPlayed.length; i++) {
+                var song = recentlyPlayed[i];
+                var li = $("<li>").text(song);
+                if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
+                    li.addClass("active");
+                }
+                li.click(function() {
+                    currentIndex = songs.indexOf($(this).text());
+                    loadSong();
+                    playSong();
+                    increasePlayCount(song); // Update play count when song is clicked
+                });
+                $(".recently-played-list").append(li);
             }
-            li.click(function() {
-                currentIndex = songs.indexOf($(this).text());
-                loadSong();
-                playSong();
-                increasePlayCount(song); // Update play count when song is clicked
-            });
-            $(".recently-played-list").append(li);
         }
-	}
     }
 
 
@@ -300,81 +300,81 @@ $(document).ready(function() {
 
     // Function to update the most played songs
     function updateMostPlayed() {
-		 var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
-    var sortedSongs = Object.keys(mostPlayed).sort(function (a, b) {
-      return mostPlayed[b] - mostPlayed[a];
-    });
-    $(".most-played-list").empty();
-    var totalCount = sortedSongs.length;
-    $(".most-played-total").text("Total: " + totalCount);
-
-    for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
         var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
         var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
             return mostPlayed[b] - mostPlayed[a];
         });
         $(".most-played-list").empty();
+        var totalCount = sortedSongs.length;
+        $(".most-played-total").text("Total: " + totalCount);
+
         for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
-            var song = sortedSongs[i];
-            var li = $("<li>").text(song + " (Played " + mostPlayed[song] + " Times)");
-            if (i === currentIndex && $("#most-played-tab").hasClass("active")) {
-                li.addClass("active");
-            }
-            li.click(function() {
-                var clickedSong = $(this).text().split(" (")[0];
-                currentIndex = songs.indexOf(clickedSong);
-                loadSong();
-                playSong();
-                increasePlayCount(clickedSong);
+            var mostPlayed = JSON.parse(localStorage.getItem("mostPlayed")) || {};
+            var sortedSongs = Object.keys(mostPlayed).sort(function(a, b) {
+                return mostPlayed[b] - mostPlayed[a];
             });
-            $(".most-played-list").append(li);
+            $(".most-played-list").empty();
+            for (var i = 0; i < Math.min(sortedSongs.length, 3); i++) {
+                var song = sortedSongs[i];
+                var li = $("<li>").text(song + " (Played " + mostPlayed[song] + " Times)");
+                if (i === currentIndex && $("#most-played-tab").hasClass("active")) {
+                    li.addClass("active");
+                }
+                li.click(function() {
+                    var clickedSong = $(this).text().split(" (")[0];
+                    currentIndex = songs.indexOf(clickedSong);
+                    loadSong();
+                    playSong();
+                    increasePlayCount(clickedSong);
+                });
+                $(".most-played-list").append(li);
+            }
         }
-	}
     }
 
     // Function to load the playlist
     function loadPlaylist() {
         // Clear the existing playlist
-		 var totalCount = songs.length;
-    $(".all-songs-total").text("Play all(" + totalCount+")");
-
-    for (var i = 0; i < songs.length; i++) {
-        $(".playlist").empty();
-
-        // Load the default playlist
-        var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-        for (var i = 0; i < Math.min(recentlyPlayed.length, 2); i++) {
-            var song = recentlyPlayed[i];
-            var li = $("<li>").text(song);
-            if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
-                li.addClass("active");
-            }
-            li.click(function() {
-                currentIndex = songs.indexOf($(this).text());
-                loadSong();
-                playSong();
-                var currentSong = songs[currentIndex];
-                increasePlayCount(currentSong);
-            });
-            $(".recently-played-list").append(li);
-        }
+        var totalCount = songs.length;
+        $(".all-songs-total").text("Play all(" + totalCount + ")");
 
         for (var i = 0; i < songs.length; i++) {
-            var song = songs[i];
-            var li = $("<li>").text(song);
-            if (i === currentIndex && $("#all-songs-tab").hasClass("active")) {
-                li.addClass("active");
+            $(".playlist").empty();
+
+            // Load the default playlist
+            var recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+            for (var i = 0; i < Math.min(recentlyPlayed.length, 2); i++) {
+                var song = recentlyPlayed[i];
+                var li = $("<li>").text(song);
+                if (i === currentIndex && $("#recently-played-tab").hasClass("active")) {
+                    li.addClass("active");
+                }
+                li.click(function() {
+                    currentIndex = songs.indexOf($(this).text());
+                    loadSong();
+                    playSong();
+                    var currentSong = songs[currentIndex];
+                    increasePlayCount(currentSong);
+                });
+                $(".recently-played-list").append(li);
             }
-            li.click(function() {
-                currentIndex = songs.indexOf($(this).text());
-                loadSong();
-                playSong();
-                var currentSong = songs[currentIndex];
-                increasePlayCount(currentSong);
-            });
-            $(".playlist").append(li);
+
+            for (var i = 0; i < songs.length; i++) {
+                var song = songs[i];
+                var li = $("<li>").text(song);
+                if (i === currentIndex && $("#all-songs-tab").hasClass("active")) {
+                    li.addClass("active");
+                }
+                li.click(function() {
+                    currentIndex = songs.indexOf($(this).text());
+                    loadSong();
+                    playSong();
+                    var currentSong = songs[currentIndex];
+                    increasePlayCount(currentSong);
+                });
+                $(".playlist").append(li);
+            }
         }
-	}
     }
     // Function to load the next song
     function loadNextSong() {
