@@ -42,7 +42,10 @@ $(document).ready(function() {
         "Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial",
         "Kabza De Small  Njelic  Nana Thula Remix feat Young Stunna  Nkosazana Daughter",
         "YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito",
-        "Yes God Mörda Thakzin Mhaw Keys Remix"
+        "Yes God Mörda Thakzin Mhaw Keys Remix",
+        "Gojasi",
+		"Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
+		"DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual"
     ];
 
 
