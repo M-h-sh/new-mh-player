@@ -44,8 +44,8 @@ $(document).ready(function() {
         "YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito",
         "Yes God Mörda Thakzin Mhaw Keys Remix",
         "Gojasi",
-		"Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
-		"DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual"
+        "Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
+        "DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual"
     ];
 
 
