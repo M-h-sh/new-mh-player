@@ -45,7 +45,8 @@ $(document).ready(function() {
         "Yes God Morda Thakzin Mhaw Keys Remix",
         "Gojasi",
         "Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
-        "DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual"
+        "DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual",
+        "Burna Boy  Big 7 Official Music Video",
     ];
 
 
