@@ -47,7 +47,8 @@ $(document).ready(function() {
         "Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
         "DJ Jaivane uLala Kanjani ft LeeMckrazy and Skandisoul Audio Visual",
         "Burna Boy  Big 7 Official Music Video",
-        "Healer of the mind"
+        "Healer of the mind",
+        "Shakespeare"
     ];
 
 
