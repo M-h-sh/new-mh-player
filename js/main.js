@@ -39,9 +39,7 @@ $(document).ready(function() {
         "Harry Cane x Master KG  Dj LaTimmy  Dubula Official Audio",
         "Jay Music 2wobunnies Casablanca Official Audio ft Tremic Dah Rockstar Amapiano song",
         "Mawhoo Kabza De Small and DJ Maphorisa  Nduma Ndumane Feat Da Muziqal Chef Official Audio",
-        "Felo Le Tee x Mellow  Sleazy  Midnight Prayer Official Audio  Amapiano feloleteeofficial",
-        "Kabza De Small  Njelic  Nana Thula Remix feat Young Stunna  Nkosazana Daughter",
-        "YB  JAY  NOKIA Quantum Sound Official Audio ft DjyloliRsa  Kat Roshqii BLZero  Lebzito",
+       
         "Yes God Morda Thakzin Mhaw Keys Remix",
         "Gojasi",
         "Oscar Mbo KG Smallz and Kabza De Small  Yes God Feat Dearson Official Audio",
