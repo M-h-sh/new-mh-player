@@ -342,7 +342,7 @@ body {
         }
  .bg-dark #search-input {
             background-color: #111;
-            border: none;
+            border: 1px solid black;
            color:#fff;
            
         }
