@@ -338,11 +338,12 @@ body {
 }
 .bg-dark .search-container {
             background-color: #111;
-            
+     
         }
  .bg-dark #search-input {
             background-color: #111;
             border: none;
+           color:#fff;
            
         }
  
