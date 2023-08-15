@@ -337,11 +337,11 @@ body {
      color:#fff;
 }
 .bg-dark .search-container {
-            background-color: #111;
+            background-color: #db0036;
             
         }
  .bg-dark #search-input {
-            background-color: #444;
+            background-color: #111;
             border: none;
            
         }
