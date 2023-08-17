@@ -50,7 +50,8 @@ $(document).ready(function() {
         "Healer of the mind",
         "Shakespeare",
         "Peacock Amapiano Remix",
-        "Uncle Waffles  Peacock Revisit ft Ice Beats Slide  Sbuda Maleather Official Video"
+        "Uncle Waffles  Peacock Revisit ft Ice Beats Slide  Sbuda Maleather Official Video",
+        "Jimmy Maradona Quayr Musiq Mellow  Sleazy  Wena Wa Pallwa Official Audio Ft Chcco Leemckrazy"
     ];
 
 
