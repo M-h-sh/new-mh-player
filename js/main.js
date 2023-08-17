@@ -49,7 +49,8 @@ $(document).ready(function() {
         "Burna Boy  Big 7 Official Music Video",
         "Healer of the mind",
         "Shakespeare",
-        "Peacock Amapiano Remix"
+        "Peacock Amapiano Remix",
+        "Uncle Waffles  Peacock Revisit ft Ice Beats Slide  Sbuda Maleather Official Video"
     ];
 
 
