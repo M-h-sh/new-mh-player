@@ -173,15 +173,16 @@ body {
      font-weight:bold;
 }
  .nav-tabs .nav-link {
+    background-color: white;
      color: #333;
 }
  .nav-tabs .nav-link.active.active-tab::after {
      display: none;
 }
  .nav-tabs .nav-link.active {
-     background-color: #fff;
+     background-color: white;
      color: #222;
-     border-bottom: 1px solid #fff;
+     border-bottom: 1px solid white;
      font-weight: bold;
 }
  .nav-tabs .nav-link.active.active-tab {
