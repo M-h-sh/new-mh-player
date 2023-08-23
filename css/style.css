@@ -12,6 +12,9 @@ body {
      color:black;
      font-size:14px;
 }
+.bg-black{
+     background:black;
+}
  .bg-dark .set{
      color:#fff;
 }
