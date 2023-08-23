@@ -181,13 +181,13 @@ body {
  .nav-tabs .nav-link.active {
      background-color: #fff;
      color: #222;
-     border-bottom: 0px solid white;
+     border-bottom: 1px solid #fff;
      font-weight: bold;
 }
  .nav-tabs .nav-link.active.active-tab {
      background-color: #fff;
      color: #222;
-     border-bottom: none;
+    border-bottom: 1px solid #fff;
      font-weight: bold;
 }
  .playlist {
@@ -295,7 +295,7 @@ body {
  .bg-dark .nav-tabs .nav-link.active {
      background-color: #111;
      color:#fff;
-     border-bottom:none;
+     border-bottom: 1px solid #111;
      font-weight:bold;
 }
  .bg-dark .playlist li {
