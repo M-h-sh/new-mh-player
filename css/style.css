@@ -293,8 +293,8 @@ body {
      color: #fff;
 }
  .bg-dark .nav-tabs .nav-link.active {
-     background-color: #fff;
-     color:black;
+     background-color: #111;
+     color:#fff;
      border-bottom:none;
      font-weight:bold;
 }
