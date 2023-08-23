@@ -1,3 +1,7 @@
+:root {
+  --black: #111;
+
+}
 body {
      height: 100%;
      margin: 0;
@@ -13,7 +17,7 @@ body {
      font-size:14px;
 }
 .bg-black{
-     background:black;
+     background-color:var(--black);
 }
  .bg-dark .set{
      color:#fff;
