@@ -51,7 +51,8 @@ $(document).ready(function() {
         "Shakespeare",
         "Peacock Amapiano Remix",
         "Uncle Waffles  Peacock Revisit ft Ice Beats Slide  Sbuda Maleather Official Video",
-        "Jimmy Maradona Quayr Musiq Mellow  Sleazy  Wena Wa Pallwa Official Audio Ft Chcco Leemckrazy"
+        "Jimmy Maradona Quayr Musiq Mellow  Sleazy  Wena Wa Pallwa Official Audio Ft Chcco Leemckrazy",
+        "Makhadzi Entertainment  Movie Official Lyrics Video feat Ntate Stunna Fortunator  Dj Gun Do"
     ];
 
 
