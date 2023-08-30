@@ -1,14 +1,13 @@
 :root {
-  --black: #111;
-
+     --black: #111;
 }
-body {
+ body {
      height: 100%;
      margin: 0;
      padding: 0;
      background-color: #f1f1f1;
 }
-.totalsong{
+ .totalsong{
      font-weight:light;
 }
 /* CSS */
@@ -16,7 +15,7 @@ body {
      color:black;
      font-size:14px;
 }
-.bg-black{
+ .bg-black{
      background-color:var(--black);
 }
  .bg-dark .set{
@@ -72,9 +71,13 @@ body {
      justify-content: space-between;
      padding: 0 10px;
 }
- .theme-switch-label .fa-moon, .theme-switch-label .fa-sun {
+ .theme-switch-label .fa-moon {
      font-size: 20px;
-     color: #fff;
+     color: #db0036;
+}
+ .theme-switch-label .fa-sun {
+     font-size: 20px;
+     color: #6C757D;
 }
  #preloader {
      position: fixed;
@@ -173,7 +176,6 @@ body {
      font-weight:bold;
 }
  .nav-tabs .nav-link {
-    
      color: #333;
 }
  .nav-tabs .nav-link.active.active-tab::after {
@@ -188,7 +190,7 @@ body {
  .nav-tabs .nav-link.active.active-tab {
      background-color: #fff;
      color: #222;
-    border-bottom: 1px solid #fff;
+     border-bottom: 1px solid #fff;
      font-weight: bold;
 }
  .playlist {
@@ -338,20 +340,19 @@ body {
      background-color: #db0036;
      color: #ffffff;
 }
-.bg-dark .all-songs-total{
+ .bg-dark .all-songs-total{
      color:#fff;
 }
-.bg-dark .totalsong{
+ .bg-dark .totalsong{
      color:#fff;
 }
-.bg-dark .search-container {
-            background-color: #111;
-            border-radius:5px;
-        }
+ .bg-dark .search-container {
+     background-color: #111;
+     border-radius:5px;
+}
  .bg-dark #search-input {
-            background-color: #111;
-            border:none;
-           color:#fff;
-           
-        }
+     background-color: #111;
+     border:none;
+     color:#fff;
+}
  
