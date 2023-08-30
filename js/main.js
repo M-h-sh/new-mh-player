@@ -71,8 +71,8 @@ $(document).ready(function() {
     // Function to apply the selected theme
     // JavaScript
     const themeToggle = document.getElementById('theme-toggle');
-    const sunIcon = document.querySelector('.fa-sun');
-    const moonIcon = document.querySelector('.fa-moon');
+    const sunIcon = document.getElementById('moon');
+    const moonIcon = document.getElementById('sun');
     const activeTab = document.querySelector('.active-tab');
 
     function applyTheme(themeName) {
@@ -87,18 +87,18 @@ $(document).ready(function() {
             $("#player").removeClass("bg-light").addClass("bg-dark");
             $("#all").removeClass("bg-white").addClass("bg-secondary");
 
-            sunIcon.style.display = 'inline-block';
+            sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
         }
         if (themeName === 'theme1') {
             // Light mode
             activeTab.classList.remove('active-tab');
             sunIcon.style.display = 'none';
-            moonIcon.style.display = 'inline-block';
+            moonIcon.style.display = 'block';
         } else if (themeName === 'theme2') {
             // Dark mode
             activeTab.classList.remove('active-tab');
-            sunIcon.style.display = 'inline-block';
+            sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
         }
     }
@@ -348,7 +348,7 @@ $(document).ready(function() {
     function loadPlaylist() {
         // Clear the existing playlist
         var totalCount = songs.length;
-        $(".all-songs-total").text("Play all(" + totalCount + ")");
+        $(".all-songs-total").text("Total Songs(" + totalCount + ")");
 
         for (var i = 0; i < songs.length; i++) {
             $(".playlist").empty();
