@@ -11,16 +11,26 @@
       <div id="preloader">
          <div class="spinner"></div>
       </div>
-      <div class="container all mt-2  ">
+      <div class="container all  ">
       <div class="row">
       <div class="col-lg-12 col-md-12">
-      <div class="player bg-light shadow" id="player">
+      <div class="player bg-light shadow mt-2" id="player">
          <h1 class="display-5 text-center">MH Music Player</h1>
          <div class="search-container">
             <input type="text" id="search-input" placeholder="Search">
          </div>
-         <div class=" rounded mt-2">
-           
+         <div class="rounded mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+               <div><span class="all-songs-total">0</span></div>
+               <div class="theme-switch">
+                  <label class="theme-switch-label">
+                  <input type="checkbox" id="theme-toggle">
+                  <span class="slider round"></span>
+                  <i class="fas fa-moon" id="moon"></i>
+                  <i class="fas fa-sun" id="sun"></i>
+                  </label>
+               </div>
+            </div>
             <div class="tab-container">
                <ul class="nav nav-tabs d-none d-lg-flex" id="tabs">
                   <li class="nav-item">
@@ -35,7 +45,6 @@
                </ul>
                <div class="tab-content d-none d-lg-flex">
                   <div class="tab-pane fade show active" id="all-songs">
-                      <div class="totalsong p-2 mt-2"><span class="all-songs-total">0</span></div>
                      <ul class="playlist"></ul>
                   </div>
                   <div class="tab-pane fade" id="most-played">
@@ -50,7 +59,6 @@
                <div class="accordion-item">
                   <p class="accordion-title ">All Songs <i class="fas fa-chevron-down"></i></p>
                   <div class="accordion-content">
-                      <div class="totalsong p-2"><span class="all-songs-total">0</span></div>
                      <ul class="playlist"></ul>
                   </div>
                </div>
@@ -99,18 +107,8 @@
             </div>
             <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
          </div>
-         <div class="theme-switch">
-            <label class="theme-switch-label">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider round"></span>
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            </label>
-         </div>
-         <div class=" set fw-bold">Dark mode</div>
       </div>
       <!-- Load your FontAwesome Kit -->
-      <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
       <script src="js/main.js"></script>
