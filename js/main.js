@@ -53,7 +53,8 @@ $(document).ready(function() {
         "Uncle Waffles  Peacock Revisit ft Ice Beats Slide  Sbuda Maleather Official Video",
         "Jimmy Maradona Quayr Musiq Mellow  Sleazy  Wena Wa Pallwa Official Audio Ft Chcco Leemckrazy",
         "Makhadzi Entertainment  Movie Official Lyrics Video feat Ntate Stunna Fortunator  Dj Gun Do",
-        "Ice Beats Slides x Sbuda Maleather  Qopetsa Ft Boi Bizza Official Audio"
+        "Ice Beats Slides x Sbuda Maleather  Qopetsa Ft Boi Bizza Official Audio",
+        "Xowla-ft-Big-Zulu-DJ-Tira-Bengdakiwe"
     ];
 
 
