@@ -55,7 +55,8 @@ $(document).ready(function() {
         "Makhadzi Entertainment  Movie Official Lyrics Video feat Ntate Stunna Fortunator  Dj Gun Do",
         "Ice Beats Slides x Sbuda Maleather  Qopetsa Ft Boi Bizza Official Audio",
         "Xowla-ft-Big-Zulu-DJ-Tira-Bengdakiwe",
-        "Killorbeezbeatz_-_Ngilele_E_Hotel"
+        "Killorbeezbeatz_-_Ngilele_E_Hotel",
+        "Mzokwana by Dj Tshegu, Focalistic, Sims Noreng"
     ];
 
 
