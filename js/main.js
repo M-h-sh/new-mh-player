@@ -56,7 +56,8 @@ $(document).ready(function() {
         "Ice Beats Slides x Sbuda Maleather  Qopetsa Ft Boi Bizza Official Audio",
         "Xowla-ft-Big-Zulu-DJ-Tira-Bengdakiwe",
         "Killorbeezbeatz_-_Ngilele_E_Hotel",
-        "Mzokwana by Dj Tshegu, Focalistic, Sims Noreng"
+        "Mzokwana by Dj Tshegu, Focalistic, Sims Noreng",
+        "Megadrumz-ft-Lady-Du-Tjina"
     ];
 
 
