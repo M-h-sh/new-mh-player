@@ -57,7 +57,8 @@ $(document).ready(function() {
         "Xowla-ft-Big-Zulu-DJ-Tira-Bengdakiwe",
         "Killorbeezbeatz_-_Ngilele_E_Hotel",
         "Mzokwana by Dj Tshegu, Focalistic, Sims Noreng",
-        "Megadrumz-ft-Lady-Du-Tjina"
+        "Megadrumz-ft-Lady-Du-Tjina",
+        "Yoh Ye Ye - Ice Beats Slide X Sbuda Maleather"
     ];
 
 
