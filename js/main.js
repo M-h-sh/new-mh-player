@@ -62,7 +62,8 @@ $(document).ready(function() {
         "EL-Shep-Ft-Dr-Joe-Shirimani-Heke",
         "Thiba Thiba  DJ Sunco SA  Queen Jenny Official Audio",
         "Bao Jelasa feat Riri AJ  Hitboss",
-        "Killorbeezbeatz  Wuuu Wuuu Official Audio"
+        "Killorbeezbeatz  Wuuu Wuuu Official Audio",
+        "Watcha Say Amapiano"
     ];
 
 
