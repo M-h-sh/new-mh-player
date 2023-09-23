@@ -59,7 +59,8 @@ $(document).ready(function() {
         "Mzokwana by Dj Tshegu, Focalistic, Sims Noreng",
         "Megadrumz-ft-Lady-Du-Tjina",
         "Yoh Ye Ye - Ice Beats Slide X Sbuda Maleather",
-        "EL-Shep-Ft-Dr-Joe-Shirimani-Heke"
+        "EL-Shep-Ft-Dr-Joe-Shirimani-Heke",
+        "Thiba Thiba  DJ Sunco SA  Queen Jenny Official Audio"
     ];
 
 
