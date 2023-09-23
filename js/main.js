@@ -61,7 +61,8 @@ $(document).ready(function() {
         "Yoh Ye Ye - Ice Beats Slide X Sbuda Maleather",
         "EL-Shep-Ft-Dr-Joe-Shirimani-Heke",
         "Thiba Thiba  DJ Sunco SA  Queen Jenny Official Audio",
-        "Bao Jelasa feat Riri AJ  Hitboss"
+        "Bao Jelasa feat Riri AJ  Hitboss",
+        "Killorbeezbeatz  Wuuu Wuuu Official Audio"
     ];
 
 
