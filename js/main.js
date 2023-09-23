@@ -60,7 +60,8 @@ $(document).ready(function() {
         "Megadrumz-ft-Lady-Du-Tjina",
         "Yoh Ye Ye - Ice Beats Slide X Sbuda Maleather",
         "EL-Shep-Ft-Dr-Joe-Shirimani-Heke",
-        "Thiba Thiba  DJ Sunco SA  Queen Jenny Official Audio"
+        "Thiba Thiba  DJ Sunco SA  Queen Jenny Official Audio",
+        "Bao Jelasa feat Riri AJ  Hitboss"
     ];
 
 
