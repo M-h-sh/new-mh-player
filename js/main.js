@@ -66,7 +66,8 @@ $(document).ready(function() {
         "Watcha Say Amapiano",
         "Dr Dope Hamba Wena ft Pro Tee Qveen Mzwilili  Kitso Nave Official Music Video",
         "Laela",
-        "Sam Deep Njelic Aymos  Isgubhu Visualizer"
+        "Sam Deep Njelic Aymos  Isgubhu Visualizer",
+        "LINDOUGH FT FREDDIE GWALA, KINGSHORT & DJ ACTIVE ~OKSALAYO (Official Audio)"
     ];
 
 
