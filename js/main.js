@@ -67,7 +67,8 @@ $(document).ready(function() {
         "Dr Dope Hamba Wena ft Pro Tee Qveen Mzwilili  Kitso Nave Official Music Video",
         "Laela",
         "Sam Deep Njelic Aymos  Isgubhu Visualizer",
-        "LINDOUGH FT FREDDIE GWALA, KINGSHORT & DJ ACTIVE ~OKSALAYO (Official Audio)"
+        "LINDOUGH FT FREDDIE GWALA, KINGSHORT & DJ ACTIVE ~OKSALAYO (Official Audio)",
+        "MALI YAMINA EKWIN_ (feat. Khensani & Bongs Nwana Mhan)"
     ];
 
 
