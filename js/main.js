@@ -65,6 +65,7 @@ $(document).ready(function() {
         "Killorbeezbeatz  Wuuu Wuuu Official Audio",
         "Watcha Say Amapiano",
         "Dr Dope Hamba Wena ft Pro Tee Qveen Mzwilili  Kitso Nave Official Music Video"
+        "Laela"
     ];
 
 
