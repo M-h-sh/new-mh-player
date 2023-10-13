@@ -68,7 +68,8 @@ $(document).ready(function() {
         "Laela",
         "Sam Deep Njelic Aymos  Isgubhu Visualizer",
         "LINDOUGH FT FREDDIE GWALA, KINGSHORT & DJ ACTIVE ~OKSALAYO (Official Audio)",
-        "MALI YAMINA EKWIN_ (feat. Khensani & Bongs Nwana Mhan)"
+        "MALI YAMINA EKWIN_ (feat. Khensani & Bongs Nwana Mhan)",
+        "Kamo Mphela, Khalil Harrison & Tyler ICU - Dalie [Feat. Baby S.O.N] (Official Audio) - Amapiano"
     ];
 
 
