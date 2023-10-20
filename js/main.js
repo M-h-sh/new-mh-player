@@ -71,7 +71,8 @@ $(document).ready(function() {
         "MALI YAMINA EKWIN_ (feat. Khensani & Bongs Nwana Mhan)",
         "Kamo Mphela, Khalil Harrison & Tyler ICU - Dalie [Feat. Baby S.O.N] (Official Audio) - Amapiano", 
         "Nichralf Hustle Prayer", 
-        "angelina revisit trechyson molly" 
+        "angelina revisit trechyson molly", 
+        "HarryCane - Whistle Song (Official Audio)" 
     ];
 
 
