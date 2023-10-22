@@ -72,7 +72,8 @@ $(document).ready(function() {
         "Kamo Mphela, Khalil Harrison & Tyler ICU - Dalie [Feat. Baby S.O.N] (Official Audio) - Amapiano", 
         "Nichralf Hustle Prayer", 
         "angelina revisit trechyson molly", 
-        "HarryCane - Whistle Song (Official Audio)" 
+        "HarryCane - Whistle Song (Official Audio)", 
+        "King Khustah, GashBeats & Myy Gerald SA - Ndincedeni (Quantum Mix) [OFFICIAL AUDIO]" 
     ];
 
 
