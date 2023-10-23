@@ -77,7 +77,8 @@ $(document).ready(function() {
         "Droatest ft. Lah'Vee - S'lala (Official Audio)",
         "ZULU (feat. AMAQHAWE, Philharmonic)",
         "Tshego - With My Bros (Official Music Video)",
-        "1.Ntokzin  - Manyonyoba Feat MalumNator x 2woshot x Stompiiey x Dr Thulz"
+        "1.Ntokzin  - Manyonyoba Feat MalumNator x 2woshot x Stompiiey x Dr Thulz",
+        "CHAYUTA -  Tonight ( Visualizer) Video"
     ];
 
 
