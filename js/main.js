@@ -76,7 +76,8 @@ $(document).ready(function() {
         "King Khustah, GashBeats & Myy Gerald SA - Ndincedeni (Quantum Mix) [OFFICIAL AUDIO]",
         "Droatest ft. Lah'Vee - S'lala (Official Audio)",
         "ZULU (feat. AMAQHAWE, Philharmonic)",
-        "Tshego - With My Bros (Official Music Video)"
+        "Tshego - With My Bros (Official Music Video)",
+        "1.Ntokzin  - Manyonyoba Feat MalumNator x 2woshot x Stompiiey x Dr Thulz"
     ];
 
 
