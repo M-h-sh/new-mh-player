@@ -75,7 +75,8 @@ $(document).ready(function() {
         "HarryCane - Whistle Song (Official Audio)", 
         "King Khustah, GashBeats & Myy Gerald SA - Ndincedeni (Quantum Mix) [OFFICIAL AUDIO]",
         "Droatest ft. Lah'Vee - S'lala (Official Audio)",
-        "ZULU (feat. AMAQHAWE, Philharmonic)"
+        "ZULU (feat. AMAQHAWE, Philharmonic)",
+        "Tshego - With My Bros (Official Music Video)"
     ];
 
 
