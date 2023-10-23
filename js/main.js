@@ -73,7 +73,8 @@ $(document).ready(function() {
         "Nichralf Hustle Prayer", 
         "angelina revisit trechyson molly", 
         "HarryCane - Whistle Song (Official Audio)", 
-        "King Khustah, GashBeats & Myy Gerald SA - Ndincedeni (Quantum Mix) [OFFICIAL AUDIO]" 
+        "King Khustah, GashBeats & Myy Gerald SA - Ndincedeni (Quantum Mix) [OFFICIAL AUDIO]",
+        "Droatest ft. Lah'Vee - S'lala (Official Audio)"
     ];
 
 
