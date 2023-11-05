@@ -78,7 +78,9 @@ $(document).ready(function() {
         "ZULU (feat. AMAQHAWE, Philharmonic)",
         "Tshego - With My Bros (Official Music Video)",
         "1.Ntokzin  - Manyonyoba Feat MalumNator x 2woshot x Stompiiey x Dr Thulz",
-        "CHAYUTA -  Tonight ( Visualizer) Video"
+        "CHAYUTA -  Tonight ( Visualizer) Video",
+        "Dubula (Nyusa Nyusa) HarryCane x Master KG & DJ Latimmy (Feat.Eemoh)",
+        "Felo_Le_Tee_ft_Leemckrazy_Keynote_-_Yini_Ngathi_Insane"
     ];
 
 
