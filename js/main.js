@@ -81,7 +81,8 @@ $(document).ready(function() {
         "CHAYUTA -  Tonight ( Visualizer) Video",
         "Dubula (Nyusa Nyusa) HarryCane x Master KG & DJ Latimmy (Feat.Eemoh)",
         "Felo_Le_Tee_ft_Leemckrazy_Keynote_-_Yini_Ngathi_Insane",
-        "DJ Tshegu and Focalistic  Tiya Mfana Mzokwana Feat Sims Noreng Official Audio"
+        "DJ Tshegu and Focalistic  Tiya Mfana Mzokwana Feat Sims Noreng Official Audio",
+        "Mzu-M-Record-L-Jones-My-Zuzu"
     ];
 
 
