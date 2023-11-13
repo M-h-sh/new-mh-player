@@ -83,7 +83,8 @@ $(document).ready(function() {
         "Felo_Le_Tee_ft_Leemckrazy_Keynote_-_Yini_Ngathi_Insane",
         "DJ Tshegu and Focalistic  Tiya Mfana Mzokwana Feat Sims Noreng Official Audio",
         "Mzu-M-Record-L-Jones-My-Zuzu",
-        "Q Twins featuring Prince Bulo Sizonyuka"
+        "Q Twins featuring Prince Bulo Sizonyuka",
+        "Summer - Single by Pexi-Tonic SA"
     ];
 
 
