@@ -84,7 +84,8 @@ $(document).ready(function() {
         "DJ Tshegu and Focalistic  Tiya Mfana Mzokwana Feat Sims Noreng Official Audio",
         "Mzu-M-Record-L-Jones-My-Zuzu",
         "Q Twins featuring Prince Bulo Sizonyuka",
-        "Summer - Single by Pexi-Tonic SA"
+        "Summer - Single by Pexi-Tonic SA",
+        "Wanitwa Mos x Nkosazana Daughter  Master KG  Keneilwe Feat Dalom Kids"
     ];
 
 
