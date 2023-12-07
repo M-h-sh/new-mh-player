@@ -85,7 +85,8 @@ $(document).ready(function() {
         "Mzu-M-Record-L-Jones-My-Zuzu",
         "Q Twins featuring Prince Bulo Sizonyuka",
         "Summer - Single by Pexi-Tonic SA",
-        "Wanitwa Mos x Nkosazana Daughter  Master KG  Keneilwe Feat Dalom Kids"
+        "Wanitwa Mos x Nkosazana Daughter  Master KG  Keneilwe Feat Dalom Kids",
+        "Killorbeezbeatz  uDecember Ksasa Official Audio"
     ];
 
 
