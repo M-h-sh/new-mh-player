@@ -88,7 +88,8 @@ $(document).ready(function() {
         "Wanitwa Mos x Nkosazana Daughter  Master KG  Keneilwe Feat Dalom Kids",
         "Killorbeezbeatz  uDecember Ksasa Official Audio",
         "Wanitwa Mos  Master KG   Dali Nguwe ft Nkosazana Daughter Basetsana Obeey Amor Official Video New",
-        "DJ EDDIE NOMATHEMBA REVISIT 2023"
+        "DJ EDDIE NOMATHEMBA REVISIT 2023",
+        "DJ 9.8 FT Pex toniq Qhubeka"
     ];
 
 
