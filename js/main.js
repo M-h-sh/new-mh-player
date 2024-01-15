@@ -90,7 +90,8 @@ $(document).ready(function() {
         "Wanitwa Mos  Master KG   Dali Nguwe ft Nkosazana Daughter Basetsana Obeey Amor Official Video New",
         "DJ EDDIE NOMATHEMBA REVISIT 2023",
         "DJ 9.8 FT Pex toniq Qhubeka",
-        "Ngiyasaba feat MaWhoo  Lady Zamar"
+        "Ngiyasaba feat MaWhoo  Lady Zamar",
+        "Deejay Bino & Dj Guyvos - Anthem (Original)"
     ];
 
 
